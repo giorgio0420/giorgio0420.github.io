@@ -1,34 +1,71 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLanguage } from '../../context/LanguageContext';
+import { Globe, Mail } from 'lucide-react';
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const isActive = (path: string) => location.pathname === path;
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'it' : 'en');
+  };
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <nav className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
+    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="nav-content">
-        <span className="nav-logo">GDS</span>
-        <div className="nav-links">
-          <Link to="/" className={`nav-link${isActive('/') ? ' nav-link--active' : ''}`}>
-            Chi Sono
-          </Link>
-          <Link to="/projects" className={`nav-link${isActive('/projects') ? ' nav-link--active' : ''}`}>
-            Projects
-          </Link>
-          <Link to="/contact" className={`nav-link${isActive('/contact') ? ' nav-link--active' : ''}`}>
-            Contacts
-          </Link>
+        
+        {/* LOGO GDS */}
+        <button onClick={() => scrollToSection('home')} className="nav-logo">
+          GDS
+        </button>
+
+        {/* NAV LINKS & ACTIONS */}
+        <div className="nav-right">
+          
+          <nav className="nav-links">
+            <button onClick={() => scrollToSection('home')} className="nav-link">
+              {t.nav.home}
+            </button>
+            <button onClick={() => scrollToSection('projects')} className="nav-link">
+              {t.nav.projects}
+            </button>
+            <button onClick={() => scrollToSection('education')} className="nav-link">
+              {t.nav.education}
+            </button>
+            <button onClick={() => scrollToSection('contact')} className="nav-link nav-link--contact-highlight">
+              <Mail size={15} />
+              <span>{t.nav.contacts}</span>
+            </button>
+          </nav>
+
+          {/* LANGUAGE TOGGLE TOP RIGHT */}
+          <div className="nav-actions">
+            <button
+              onClick={toggleLanguage}
+              className="lang-toggle-btn"
+              title={`Switch to ${language === 'en' ? 'Italian' : 'English'}`}
+            >
+              <Globe size={16} />
+              <span className="lang-code">{language.toUpperCase()}</span>
+            </button>
+          </div>
+
         </div>
+
       </div>
-    </nav>
+    </header>
   );
 }

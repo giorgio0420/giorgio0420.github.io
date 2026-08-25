@@ -1,98 +1,113 @@
-import { Star, GitFork, BookOpen } from "lucide-react";
-import { useEffect, useState } from "react";
-
-export interface ProjectData {
-  id: number;
-  name: string;
-  full_name?: string;
-  description: string;
-  html_url: string;
-  language: string;
-  stargazers_count: number;
-  forks_count: number;
-  default_branch?: string;
-  pushed_at?: string;
-  owner?: {
-    login: string;
-  };
-}
+import { useState } from 'react';
+import { useLanguage } from '../../context/LanguageContext';
+import { KNOWN_REPO_GIFS, type Project } from '../../data/projects';
+import { GithubIcon } from '../common/Icons';
+import { Star, GitFork, Bot, Code2, Cpu } from 'lucide-react';
 
 interface Props {
-  project: ProjectData;
+  project: Project;
 }
 
 export function ProjectCard({ project }: Props) {
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const { t } = useLanguage();
 
-  const owner = project.owner?.login || 'giorgio0420';
+  const candidates = KNOWN_REPO_GIFS[project.name] || (project.gifUrl ? [project.gifUrl] : [
+    `https://raw.githubusercontent.com/giorgio0420/${project.name}/main/gif.gif`,
+    `https://raw.githubusercontent.com/giorgio0420/${project.name}/main/preview.gif`,
+    `https://raw.githubusercontent.com/giorgio0420/${project.name}/master/gif.gif`,
+  ]);
 
-  useEffect(() => {
-    // Fetch repo root contents to find any gif or png
-    fetch(`https://api.github.com/repos/${owner}/${project.name}/contents/`)
-      .then(r => r.json())
-      .then((files: { name: string; download_url: string; type: string }[]) => {
-        if (!Array.isArray(files)) return;
-        const images = files.filter(f => f.type === 'file' && /\.(gif|png|jpg|jpeg|webp)$/i.test(f.name));
-        // Prefer gif over other formats
-        const gif = images.find(f => /\.gif$/i.test(f.name));
-        const other = images.find(f => /\.(png|jpg|jpeg|webp)$/i.test(f.name));
-        const chosen = gif || other || null;
-        setImageUrl(chosen ? chosen.download_url : null);
-      })
-      .catch(() => setImageUrl(null));
-  }, [owner, project.name]);
+  const [candidateIndex, setCandidateIndex] = useState(0);
+  const [imageError, setImageError] = useState(false);
+
+  const currentImageUrl = candidateIndex < candidates.length ? candidates[candidateIndex] : null;
+
+  const handleImageError = () => {
+    if (candidateIndex + 1 < candidates.length) {
+      setCandidateIndex((prev) => prev + 1);
+    } else {
+      setImageError(true);
+    }
+  };
+
+  const getLanguageDotClass = (lang?: string) => {
+    if (!lang) return 'lang-dot';
+    const l = lang.toLowerCase();
+    if (l.includes('python')) return 'lang-dot lang-dot--python';
+    if (l.includes('c++') || l.includes('cpp')) return 'lang-dot lang-dot--cpp';
+    if (l.includes('matlab')) return 'lang-dot lang-dot--matlab';
+    if (l.includes('notebook') || l.includes('jupyter')) return 'lang-dot lang-dot--jupyter';
+    if (l.includes('c')) return 'lang-dot lang-dot--c';
+    return 'lang-dot';
+  };
 
   return (
-    <a href={project.html_url} target="_blank" rel="noreferrer" className="project-card" style={{ display: 'flex', flexDirection: 'column' }}>
+    <div className="project-card glass-card">
       
-      {imageUrl && (
-        <div 
-          className="project-image-container" 
-          style={{ 
-            width: '100%', 
-            height: '150px', 
-            borderRadius: '4px', 
-            marginBottom: '1rem', 
-            backgroundColor: '#1a1a24',
-            overflow: 'hidden',
-            position: 'relative'
-          }} 
-        >
-          <img 
-            src={imageUrl}
-            alt={`${project.name} cover`}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+      {/* GIF MEDIA PREVIEW CONTAINER — ALWAYS ANIMATES & LOOPS CONTINUOUSLY */}
+      {currentImageUrl && !imageError && (
+        <div className="project-media-container">
+          <img
+            src={currentImageUrl}
+            alt={`${project.name} live GIF preview`}
+            className="project-media-img"
+            onError={handleImageError}
+            loading="lazy"
           />
         </div>
       )}
 
-      <div className="project-title">
-        <BookOpen size={20} />
-        {project.name}
-      </div>
-
-      <div className="project-desc" style={{ flexGrow: 1 }}>
-        {project.description || "No description provided."}
-      </div>
-
-      <div className="project-meta" style={{ marginTop: 'auto', paddingTop: '1rem' }}>
-        {project.language && (
-          <div className="meta-item">
-            <span style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--accent-color)', display: 'inline-block' }}></span>
-            {project.language}
-          </div>
+      {/* CARD HEADER */}
+      <div className="project-card-header">
+        <div className="project-category-badge">
+          <span className={getLanguageDotClass(project.language)} />
+          <span>{project.language || 'Code'}</span>
+        </div>
+        {project.fork && (
+          <span className="project-metrics-badge">Fork</span>
         )}
-        <div className="meta-item" title="Stars">
-          <Star size={14} />
-          {project.stargazers_count}
+      </div>
+
+      {/* CARD TITLE & DESC */}
+      <h3 className="project-title">{project.title || project.name}</h3>
+      
+      <p className="project-desc">
+        {project.description || 'No description provided for this repository.'}
+      </p>
+
+      {/* TOPICS / TAGS */}
+      {project.topics && project.topics.length > 0 && (
+        <div className="project-stack">
+          {project.topics.slice(0, 5).map((topic) => (
+            <span key={topic} className="tech-tag">
+              #{topic}
+            </span>
+          ))}
         </div>
-        <div className="meta-item" title="Forks">
-          <GitFork size={14} />
-          {project.forks_count}
+      )}
+
+      {/* FOOTER & METRICS */}
+      <div className="project-card-footer">
+        <a
+          href={project.html_url}
+          target="_blank"
+          rel="noreferrer"
+          className="project-link-btn project-link-btn--github"
+        >
+          <GithubIcon size={18} />
+          <span>{t.projects.viewCode}</span>
+        </a>
+
+        <div className="project-stats-meta" style={{ marginLeft: 'auto', display: 'flex', gap: '0.9rem', fontSize: '0.88rem', color: 'var(--text-muted)' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+            <Star size={15} /> {project.stargazers_count}
+          </span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+            <GitFork size={15} /> {project.forks_count}
+          </span>
         </div>
       </div>
-      
-    </a>
+
+    </div>
   );
 }
-
