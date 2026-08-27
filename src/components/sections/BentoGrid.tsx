@@ -213,25 +213,6 @@ export function BentoGrid() {
         </div>
       </div>
 
-      {/* 7. DAILY RITUAL (HOT GREEN TEA) */}
-      <div className="bento-card bento-card--ritual glass-card">
-        <div className="bento-header">
-          <span className="bento-badge bento-badge--green">
-            <Coffee size={15} className="bento-icon-green" />
-            {b.ritualTitle}
-          </span>
-          <span className="bento-username-tag" style={{ background: 'rgba(34, 197, 94, 0.12)', borderColor: 'rgba(34, 197, 94, 0.3)', color: '#22c55e' }}>
-            {b.ritualSub}
-          </span>
-        </div>
-        <div className="bento-body">
-          <div className="bento-highlight-text">🍵 {b.ritualDesc}</div>
-        </div>
-        <div className="bento-footer">
-          <span className="bento-tag">Morning Constant</span>
-        </div>
-      </div>
-
     </div>
   );
 }

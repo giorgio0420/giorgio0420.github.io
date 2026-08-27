@@ -203,10 +203,6 @@ export function Home() {
                   alt="Giorgio De Santis"
                   className="hero-profile-img"
                 />
-                <div className="photo-overlay-badge">
-                  <span className="status-dot-pulse" />
-                  <span className="photo-badge-text">Giorgio De Santis — AI & Robotics</span>
-                </div>
               </div>
             </div>
             <div className="hero-photo-glow" />

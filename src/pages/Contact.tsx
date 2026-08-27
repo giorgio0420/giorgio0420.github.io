@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { GithubIcon, LinkedinIcon } from '../components/common/Icons';
-import { Mail, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, Send, CheckCircle2, FileText } from 'lucide-react';
 
 export function Contact() {
   const { t } = useLanguage();
@@ -98,6 +98,22 @@ export function Contact() {
               <div>
                 <span className="contact-link-label">{t.contact.githubLabel}</span>
                 <span className="contact-link-value">@giorgio0420</span>
+              </div>
+            </a>
+
+            <a
+              href="/Giorgio_De_Santis_CV.pdf"
+              target="_blank"
+              rel="noreferrer"
+              download
+              className="contact-link glass-card"
+            >
+              <div className="contact-icon-wrap contact-icon--cv">
+                <FileText size={22} />
+              </div>
+              <div>
+                <span className="contact-link-label">{t.contact.cvLabel}</span>
+                <span className="contact-link-value">Giorgio_De_Santis_CV.pdf</span>
               </div>
             </a>
 
