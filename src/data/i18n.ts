@@ -72,13 +72,14 @@ export const translations = {
     },
     skills: {
       label: 'Skills',
-      title: 'System Stack & Technical Capabilities',
-      sub: 'From low-level embedded hardware up to autonomous perception algorithms.',
+      title: 'Technical Stack & Capabilities',
+      sub: 'From robotics middleware and embedded silicon to AI perception models and scientific computing.',
       categories: [
-        { category: 'Silicon & Low-Level Embedded', items: ['STM32 / ARM Cortex', 'Arduino & ESP32', 'FreeRTOS', 'KiCad PCB Design', 'CAN / SPI / I2C / UART'] },
-        { category: 'Middleware & Autonomous Systems', items: ['ROS2 / Nav2', 'SLAM & Odometry', 'Gazebo / Ignition', 'C++ 17/20', 'Control Theory'] },
-        { category: 'AI & Perception', items: ['PyTorch / Neural Nets', 'OpenCV / PCL', 'Computer Vision', 'Python 3', 'Edge-AI'] },
-        { category: 'CAD & Infrastructure', items: ['SolidWorks / CAD', 'Docker / Containers', 'Git / GitHub CI', 'Linux System Admin', 'Bash CLI'] },
+        { category: 'Robotics & Simulation', items: ['ROS 2', 'Gazebo', 'CoppeliaSim', 'MathWorks', 'NVIDIA'] },
+        { category: 'Electronics, Embedded & Circuit Simulation', items: ['STM32', 'Arduino', 'Texas Instruments', 'LTspice', 'TINA-TI', 'FreeRTOS', 'ESP32', 'KiCad'] },
+        { category: 'Languages, Systems & DevOps', items: ['C++', 'C', 'Python', 'Lua', 'CMake', 'Linux', 'Ubuntu', 'Docker', 'VS Code', 'Git', 'GitHub'] },
+        { category: 'AI, Deep Learning & Data Science', items: ['PyTorch', 'TensorFlow', 'Keras', 'OpenCV', 'Hugging Face', 'Weights & Biases', 'Kaggle', 'Scikit-Learn', 'NumPy', 'Pandas', 'SciPy', 'SymPy', 'Jupyter', 'Anaconda', 'Miniconda'] },
+        { category: 'Mathematics & Scientific Computing', items: ['Wolfram Mathematica', 'Gnuplot', 'R', 'LaTeX'] },
       ],
     },
     experienceEducation: {
@@ -211,13 +212,14 @@ export const translations = {
     },
     skills: {
       label: 'Competenze',
-      title: 'Stack Tecnologico & Architettura',
-      sub: 'Dal silicio/circuiti a basso livello fino agli algoritmi di percezione autonoma.',
+      title: 'Stack Tecnologico & Specializzazioni',
+      sub: 'Dalla simulazione robotica e circuiti embedded fino ai modelli di percezione AI e calcolo scientifico.',
       categories: [
-        { category: 'Silicio & Embedded a Basso Livello', items: ['STM32 / ARM Cortex', 'Arduino & ESP32', 'FreeRTOS', 'KiCad PCB Design', 'CAN / SPI / I2C / UART'] },
-        { category: 'Middleware & Sistemi Autonomi', items: ['ROS2 / Nav2', 'SLAM & Odometria', 'Gazebo / Ignition', 'C++ 17/20', 'Teoria dei Controlli'] },
-        { category: 'AI & Percezione', items: ['PyTorch / Reti Neurali', 'OpenCV / PCL', 'Computer Vision', 'Python 3', 'Edge-AI'] },
-        { category: 'CAD & Infrastruttura di Sistema', items: ['SolidWorks / CAD', 'Docker / Container', 'Git / GitHub CI', 'Linux System Admin', 'Bash CLI'] },
+        { category: 'Robotica & Simulazione', items: ['ROS 2', 'Gazebo', 'CoppeliaSim', 'MathWorks', 'NVIDIA'] },
+        { category: 'Elettronica, Embedded & Simulazione Circuiti', items: ['STM32', 'Arduino', 'Texas Instruments', 'LTspice', 'TINA-TI', 'FreeRTOS', 'ESP32', 'KiCad'] },
+        { category: 'Linguaggi, Sistemi & DevOps', items: ['C++', 'C', 'Python', 'Lua', 'CMake', 'Linux', 'Ubuntu', 'Docker', 'VS Code', 'Git', 'GitHub'] },
+        { category: 'AI, Deep Learning & Data Science', items: ['PyTorch', 'TensorFlow', 'Keras', 'OpenCV', 'Hugging Face', 'Weights & Biases', 'Kaggle', 'Scikit-Learn', 'NumPy', 'Pandas', 'SciPy', 'SymPy', 'Jupyter', 'Anaconda', 'Miniconda'] },
+        { category: 'Matematica & Calcolo Scientifico', items: ['Wolfram Mathematica', 'Gnuplot', 'R', 'LaTeX'] },
       ],
     },
     experienceEducation: {

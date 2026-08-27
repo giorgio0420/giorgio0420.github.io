@@ -1,58 +1,50 @@
-# Impeccable Design Profile: Giorgio De Santis CV & Portfolio
+# Product
 
-## 1. Product Overview & Persona
-- **Project Name:** `CVProject` (Personal Portfolio & CV)
-- **Target Audience:** Recruiters, research labs, robotics companies, AI startups, and technical collaborators.
-- **Identity:** Giorgio De Santis — Robotics Engineer, AI Developer, Embedded Systems Specialist, Hardware Designer.
-- **Core Value Prop:** Bridging the gap between hardware engineering (STM32, KiCad, CAN bus) and intelligent software/AI (ROS2, SLAM, PyTorch, Computer Vision).
+<!-- impeccable:product-schema 1 -->
 
----
+## Platform
+web
 
-## 2. Tech Stack & Architecture
-- **Framework:** React 19 + TypeScript
-- **Bundler / Build Tool:** Vite 8
-- **Routing:** React Router v7 (`react-router-dom`)
-- **Styling:** Custom CSS System with CSS Variables, Glassmorphism, and Fluid Typography (`src/index.css`)
-- **Typography:** 
-  - Display / Headings: `Outfit` (Weights: 300–800)
-  - Body / UI: `Inter` (Weights: 400–600)
-- **Icons & Effects:** `lucide-react`, `react-simple-typewriter`
+## Stack
+React 19, TypeScript, Vite 8, React Router v7, Custom CSS System (CSS Variables + Industrial Grid Design Tokens), Lucide React & Phosphor Icons
 
----
+## Users
+Recruiters, hiring managers, engineering leads, research labs, robotics companies, AI startups, and technical collaborators seeking specialized expertise in Robotics, Embedded Systems, and AI.
 
-## 3. Design System & Tokens
+## Product Purpose
+Position Giorgio De Santis as a top-tier Robotics & AI Engineer who seamlessly bridges physical hardware engineering (STM32 microcontrollers, KiCad PCB design, CAN bus) with autonomous software systems (ROS2, SLAM, PyTorch, Computer Vision). Drive high-value contact actions, interview invitations, and project collaborations.
 
-### Color Palette & Theme (Lunar Dark / Space Glass)
-- **Primary Background:** `--bg: #08090f` (Deep obsidian dark)
-- **Background Image:** `/background.jpg` with fixed attachment and radial dark overlay
-- **Cool Accent:** `--accent: #7eb8f7` (Moon blue)
-- **Warm Accent:** `--accent-warm: #d4956a` (Lunar rust / copper accent)
-- **Glow & Highlights:** `--accent-glow: rgba(126, 184, 247, 0.18)`
+## Positioning
+"Bridging Hardware & Intelligence" — Unlike pure software developers or traditional mechanical engineers, Giorgio operates across the complete robotics pipeline: from low-level C++ firmware and PCB hardware to real-time ROS2 autonomous navigation, SLAM mapping, and deep neural perception models.
 
-### Surfaces & Glassmorphism
-- **Surface Default:** `rgba(255, 255, 255, 0.07)` (`--surface`)
-- **Surface Hover:** `rgba(255, 255, 255, 0.12)` (`--surface-hover`)
-- **Borders:** `1px solid rgba(255, 255, 255, 0.12)` (`--border`)
-- **Border Hover:** `rgba(255, 255, 255, 0.30)` (`--border-hover`)
-- **Backdrop Blur:** `blur(18px) saturate(180%)`
+## Operating Context
+Personal engineering showcase, dynamic interactive portfolio, CV platform, and direct contact portal. High-density, high-legibility technical interface optimized for fast evaluation by engineers, technical recruiters, and executives on both desktop and mobile devices.
 
-### Radii & Spacing
-- **Border Radius:** `10px` (Small), `18px` (Medium), `28px` (Large)
-- **Navbar Height:** `72px`
-- **Transitions:** `0.3s cubic-bezier(0.4, 0, 0.2, 1)`
+## Capabilities and Constraints
+- High-performance React 19 + Vite 8 SPA build with code-splitting.
+- Live GitHub API integration fetching real-time repositories and star metrics for `@giorgio0420`.
+- Fast initial paint (<1.0s), zero layout shift, strict WCAG 2.1 AA contrast ratio (≥ 4.5:1).
+- Multi-language support (Italian & English i18n via `src/data/i18n.ts`).
 
----
+## Brand Commitments
+- Name: Giorgio De Santis
+- Title: Robotics & AI Engineer
+- Voice: Precise, authoritative, technical, grounded in physical engineering reality (no generic "cloud fluff").
+- Core Aesthetic: Industrial Minimal Grid / Tactical Carbon / Amber Gold (`#f59e0b`) & Laser Cyan (`#06b6d4`).
+- Typography: `Roboto Mono` for technical headers, badges, and telemetry; `Inter` for clean body reading.
 
-## 4. Key Component Structure
-- **Navbar:** Sticky glassmorphic header with route highlighting (`src/components/layout/Navbar.tsx`)
-- **Hero:** Eye-catching intro with dynamic typing title, photo glass container, and CTA buttons (`src/pages/Home.tsx`)
-- **About & Skills:** Statistics counters, glassmorphic skill cards categorized by discipline (`src/pages/Home.tsx`)
-- **Projects Grid:** Live GitHub repo fetching for `@giorgio0420` with custom include/exclude filters (`src/pages/Projects.tsx`)
-- **Contact:** Glass form with interactive input states and direct social links (`src/pages/Contact.tsx`)
+## Evidence on Hand
+- Public GitHub Repositories (`@giorgio0420`).
+- Real hardware projects: STM32 firmware, KiCad board layouts, ROS2 autonomous navigation nodes, SLAM maps.
+- Quantitative experience metrics and technical achievements.
 
----
+## Product Principles
+1. **Real-World Anchoring:** Reflect physical machinery, circuit boards, and real software stacks in all visual and interactive elements.
+2. **High-Density Technical Scannability:** Structure content with crisp technical grids, telemetry metrics, and modular data cards.
+3. **Impeccable Ergonomics & Accessibility:** 60fps micro-interactions, distinct `:focus-visible` outlines, touch targets ≥ 44px, and complete ARIA labeling.
 
-## 5. Design Guidelines & Impeccable Standards
-1. **Contrast First:** Always ensure text on glass background maintains high legibility via body dark overlays.
-2. **Polished Micro-interactions:** Card hover states include soft vertical translation (`translateY(-3px)`), border glow, and smooth shadow expansion.
-3. **Responsive Scaling:** Utilize CSS `clamp()` and media query breakpoints at `900px` and `600px` for optimal viewing on desktop, tablet, and mobile devices.
+## Accessibility & Inclusion
+- Standards: WCAG 2.1 AA compliant contrast and structure.
+- Focus: High-visibility 2px outline for keyboard users.
+- Touch/Click Targets: Minimum 44×44px interactive regions across all mobile and desktop viewports.
+- Screen Readers: Comprehensive `aria-label` attributes on icon-only buttons, route links, and dynamic filters.
