@@ -3,9 +3,9 @@ import { useLanguage } from '../context/LanguageContext';
 import { REAL_GITHUB_REPOS_FALLBACK, type Project } from '../data/projects';
 import { ProjectCard } from '../components/projects/ProjectCard';
 
-const CACHE_KEY = 'giorgio0420_github_repos_v2';
-const CACHE_TIME_KEY = 'giorgio0420_github_repos_time_v2';
-const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour TTL
+const CACHE_KEY = 'giorgio0420_github_repos_v3';
+const CACHE_TIME_KEY = 'giorgio0420_github_repos_time_v3';
+const CACHE_TTL_MS = 30 * 60 * 1000; // 30 minutes TTL
 
 export function Projects() {
   const { t } = useLanguage();
@@ -40,8 +40,13 @@ export function Projects() {
         
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
-          setProjects(data);
-          sessionStorage.setItem(CACHE_KEY, JSON.stringify(data));
+          const sorted = [...data].sort((a, b) => {
+            const timeA = new Date(a.pushed_at || a.updated_at || 0).getTime();
+            const timeB = new Date(b.pushed_at || b.updated_at || 0).getTime();
+            return timeB - timeA;
+          });
+          setProjects(sorted);
+          sessionStorage.setItem(CACHE_KEY, JSON.stringify(sorted));
           sessionStorage.setItem(CACHE_TIME_KEY, now.toString());
         }
       } catch (err) {

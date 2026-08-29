@@ -69,6 +69,10 @@ const TECH_ICON_SLUG_MAP: Record<string, TechIconInfo> = {
   'GitHub': { slug: 'github', color: 'ffffff' },
 };
 
+const CACHE_KEY = 'giorgio0420_github_repos_v3';
+const CACHE_TIME_KEY = 'giorgio0420_github_repos_time_v3';
+const CACHE_TTL_MS = 30 * 60 * 1000; // 30 minutes TTL
+
 export function Home() {
   const { t } = useLanguage();
   
@@ -102,8 +106,13 @@ export function Home() {
         
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
-          setProjects(data);
-          sessionStorage.setItem(CACHE_KEY, JSON.stringify(data));
+          const sorted = [...data].sort((a, b) => {
+            const timeA = new Date(a.pushed_at || a.updated_at || 0).getTime();
+            const timeB = new Date(b.pushed_at || b.updated_at || 0).getTime();
+            return timeB - timeA;
+          });
+          setProjects(sorted);
+          sessionStorage.setItem(CACHE_KEY, JSON.stringify(sorted));
           sessionStorage.setItem(CACHE_TIME_KEY, now.toString());
         }
       } catch (err) {
