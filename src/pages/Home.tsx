@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import { useLanguage } from '../context/LanguageContext';
+import { CollapsibleSection } from '../components/common/CollapsibleSection';
 import { ExperienceEducation } from '../components/sections/ExperienceEducation';
 import { BentoGrid } from '../components/sections/BentoGrid';
 import { Contact } from './Contact';
 import { REAL_GITHUB_REPOS_FALLBACK, type Project } from '../data/projects';
 import { ProjectCard } from '../components/projects/ProjectCard';
 import { GithubIcon, LinkedinIcon } from '../components/common/Icons';
-import { FileText, Bot, Cpu, CircuitBoard, ChevronDown, MapPin } from 'lucide-react';
+import { FileText, ChevronDown } from 'lucide-react';
 
 interface TechIconInfo {
   slug: string;
@@ -229,55 +230,62 @@ export function Home() {
       </section>
 
       {/* 2. ABOUT SECTION (ACADEMIC & TECHNICAL PROFILE ONLY) */}
-      <section id="about" className="section section--about">
-        <div className="container">
-          <span className="section-label">{t.about.label}</span>
-          <h2 className="section-title">{t.about.title}</h2>
-          <p className="section-sub">{t.about.sub}</p>
+      <CollapsibleSection
+        id="about"
+        className="section--about"
+        label={t.about.label}
+        title={t.about.title}
+        sub={t.about.sub}
+        defaultOpen={true}
+      >
+        <div className="about-card glass-card">
+          <p className="about-text">{t.about.text1}</p>
+          {t.about.text2 && <p className="about-text">{t.about.text2}</p>}
+          {t.about.text3 && <p className="about-text">{t.about.text3}</p>}
           
-          <div className="about-card glass-card">
-            <p className="about-text">{t.about.text1}</p>
-            <p className="about-text">{t.about.text2}</p>
-            
-            <div className="about-meta">
-              <div className="about-stat">
-                <span className="stat-num">{t.about.stat1Number}</span>
-                <span className="stat-label">{t.about.stat1Label}</span>
-              </div>
-              <div className="about-stat">
-                <span className="stat-num">{t.about.stat2Number}</span>
-                <span className="stat-label">{t.about.stat2Label}</span>
-              </div>
-              <div className="about-stat">
-                <span className="stat-num">{t.about.stat3Number}</span>
-                <span className="stat-label">{t.about.stat3Label}</span>
-              </div>
+          <div className="about-meta">
+            <div className="about-stat">
+              <span className="stat-num">{t.about.stat1Number}</span>
+              <span className="stat-label">{t.about.stat1Label}</span>
+            </div>
+            <div className="about-stat">
+              <span className="stat-num">{t.about.stat2Number}</span>
+              <span className="stat-label">{t.about.stat2Label}</span>
+            </div>
+            <div className="about-stat">
+              <span className="stat-num">{t.about.stat3Number}</span>
+              <span className="stat-label">{t.about.stat3Label}</span>
             </div>
           </div>
-
         </div>
-      </section>
+      </CollapsibleSection>
 
-      {/* 3. SKILLS SECTION */}
-      <section id="skills" className="section section--skills">
-        <div className="container">
-          <span className="section-label">{t.skills.label}</span>
-          <h2 className="section-title">{t.skills.title}</h2>
-          <p className="section-sub">{t.skills.sub}</p>
-          <div className="skills-grid">
-            {t.skills.categories.map((group) => {
-              const isAiCategory = group.category.includes('AI') || group.category.includes('Deep Learning');
-              return (
-                <div
-                  key={group.category}
-                  className={`skill-card glass-card ${isAiCategory ? 'skill-card--wide' : ''}`}
-                >
-                  <h3 className="skill-category">{group.category}</h3>
-                  <div className="skills-badges-wrap">
-                    {group.items.map((skill) => {
+      {/* 3. SKILLS SECTION — CONTINUOUS THEMATIC MARQUEE CHAINS */}
+      <CollapsibleSection
+        id="skills"
+        className="section--skills"
+        label={t.skills.label}
+        title={t.skills.title}
+        sub={t.skills.sub}
+        defaultOpen={true}
+      >
+        <div className="skills-marquee-container">
+          {t.skills.categories.map((group, index) => {
+            // Duplicate items 4x to guarantee a seamless continuous marquee loop without gaps
+            const duplicatedItems = [...group.items, ...group.items, ...group.items, ...group.items];
+            const isReverse = index % 2 === 1;
+
+            return (
+              <div key={group.category} className="skills-marquee-row-wrapper">
+                <div className="skills-marquee-cat-label">
+                  <span>{group.category}</span>
+                </div>
+                <div className="skills-marquee-track-outer">
+                  <div className={`skills-marquee-track ${isReverse ? 'skills-marquee-track--reverse' : ''}`}>
+                    {duplicatedItems.map((skill, idx) => {
                       const iconInfo = TECH_ICON_SLUG_MAP[skill];
                       return (
-                        <div key={skill} className="skill-tech-pill">
+                        <div key={`${skill}-${idx}`} className="skill-tech-pill-marquee">
                           {iconInfo ? (
                             <img
                               src={`https://cdn.simpleicons.org/${iconInfo.slug}/${iconInfo.color}`}
@@ -297,68 +305,76 @@ export function Home() {
                     })}
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
-      </section>
+      </CollapsibleSection>
 
       {/* 4. PROJECTS SHOWCASE SECTION */}
-      <section id="projects" className="section section--projects">
-        <div className="container">
-          <span className="section-label">{t.projects.label}</span>
-          <h2 className="section-title">{t.projects.title}</h2>
-          <p className="section-sub">{t.projects.sub}</p>
-
-          <div className="project-filters">
-            <button
-              className={`filter-btn ${filter === 'all' ? 'filter-btn--active' : ''}`}
-              onClick={() => setFilter('all')}
-            >
-              {t.projects.filterAll}
-            </button>
-            <button
-              className={`filter-btn ${filter === 'robotics' ? 'filter-btn--active' : ''}`}
-              onClick={() => setFilter('robotics')}
-            >
-              {t.projects.filterRobotics}
-            </button>
-            <button
-              className={`filter-btn ${filter === 'ai' ? 'filter-btn--active' : ''}`}
-              onClick={() => setFilter('ai')}
-            >
-              {t.projects.filterAI}
-            </button>
-          </div>
-
-          {loading ? (
-            <div className="projects-loading">Loading real GitHub repositories...</div>
-          ) : (
-            <div className="projects-grid">
-              {filteredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          )}
-
+      <CollapsibleSection
+        id="projects"
+        className="section--projects"
+        label={t.projects.label}
+        title={t.projects.title}
+        sub={t.projects.sub}
+        defaultOpen={true}
+      >
+        <div className="project-filters">
+          <button
+            className={`filter-btn ${filter === 'all' ? 'filter-btn--active' : ''}`}
+            onClick={() => setFilter('all')}
+          >
+            {t.projects.filterAll}
+          </button>
+          <button
+            className={`filter-btn ${filter === 'robotics' ? 'filter-btn--active' : ''}`}
+            onClick={() => setFilter('robotics')}
+          >
+            {t.projects.filterRobotics}
+          </button>
+          <button
+            className={`filter-btn ${filter === 'ai' ? 'filter-btn--active' : ''}`}
+            onClick={() => setFilter('ai')}
+          >
+            {t.projects.filterAI}
+          </button>
         </div>
-      </section>
+
+        {loading ? (
+          <div className="projects-loading">Loading real GitHub repositories...</div>
+        ) : (
+          <div className="projects-grid">
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        )}
+      </CollapsibleSection>
 
       {/* 5. EDUCATION & EXPERIENCE TIMELINE SECTION */}
-      <section id="education">
+      <CollapsibleSection
+        id="education"
+        className="section--timeline"
+        label={t.experienceEducation.sectionLabel}
+        title={t.experienceEducation.sectionTitle}
+        sub={t.experienceEducation.sectionSub}
+        defaultOpen={true}
+      >
         <ExperienceEducation />
-      </section>
+      </CollapsibleSection>
 
-      {/* 6. OTHER PASSIONS & PERSONAL INTERESTS (BENTO GRID SECTION AT THE END) */}
-      <section id="passions" className="section section--passions">
-        <div className="container">
-          <span className="section-label">{t.passions.label}</span>
-          <h2 className="section-title">{t.passions.title}</h2>
-          <p className="section-sub">{t.passions.sub}</p>
-
-          <BentoGrid />
-        </div>
-      </section>
+      {/* 6. OTHER PASSIONS & PERSONAL INTERESTS */}
+      <CollapsibleSection
+        id="passions"
+        className="section--passions"
+        label={t.passions.label}
+        title={t.passions.title}
+        sub={t.passions.sub}
+        defaultOpen={true}
+      >
+        <BentoGrid />
+      </CollapsibleSection>
 
       {/* 7. CONTACT SECTION */}
       <Contact />

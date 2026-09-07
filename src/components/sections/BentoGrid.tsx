@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { ChessLogoIcon } from '../common/Icons';
-import { BookOpen, Music, Trophy, Compass, Coffee, ExternalLink, Zap, Swords } from 'lucide-react';
+import { BookOpen, Music, ExternalLink, Zap, Swords } from 'lucide-react';
 
 interface ChessStats {
   rapid?: number;
@@ -126,18 +126,19 @@ export function BentoGrid() {
         </div>
       </div>
 
-      {/* 3. BOOKSHELF & LITERATURE */}
-      <div className="bento-card bento-card--books glass-card">
+      {/* 3. CONSIGLI & SUBSTACK (Books, Film, Essays) */}
+      <div className="bento-card bento-card--recommendations glass-card">
         <div className="bento-header">
           <span className="bento-badge">
             <BookOpen size={15} className="bento-icon-accent" />
-            {b.booksTitle}
+            {b.recommendationsTitle}
           </span>
-          <span className="bento-tag">{b.booksSub}</span>
+          <span className="bento-tag">{b.recommendationsSub}</span>
         </div>
         <div className="bento-body">
-          <div className="bento-authors-list">
-            {b.booksAuthors.map((author) => (
+          <p className="bento-desc">{b.recommendationsDesc}</p>
+          <div className="bento-authors-list" style={{ marginTop: '0.6rem' }}>
+            {b.recommendationsAuthors.map((author) => (
               <span key={author} className="bento-author-pill">
                 {author}
               </span>
@@ -146,7 +147,10 @@ export function BentoGrid() {
         </div>
         <div className="bento-footer">
           <span className="bento-highlight-text" style={{ fontSize: '0.82rem', color: 'var(--text-sub)' }}>
-            Deep narrative analysis & classic literature
+            Substack & Personal Selection
+          </span>
+          <span className="bento-username-tag" style={{ background: 'rgba(212, 149, 106, 0.12)', borderColor: 'rgba(212, 149, 106, 0.3)', color: 'var(--accent-warm)' }}>
+            Coming Soon
           </span>
         </div>
       </div>
@@ -174,42 +178,6 @@ export function BentoGrid() {
         </div>
         <div className="bento-footer">
           <span className="bento-tag">{b.musicSub}</span>
-        </div>
-      </div>
-
-      {/* 5. FOOTBALL & SPORTS */}
-      <div className="bento-card bento-card--sports glass-card">
-        <div className="bento-header">
-          <span className="bento-badge">
-            <Trophy size={15} className="bento-icon-warm" />
-            {b.sportsTitle}
-          </span>
-          <span className="bento-username-tag" style={{ background: 'rgba(212, 149, 106, 0.15)', borderColor: 'rgba(212, 149, 106, 0.35)', color: 'var(--accent-warm)' }}>
-            {b.sportsSub}
-          </span>
-        </div>
-        <div className="bento-body">
-          <p className="bento-desc">{b.sportsDesc}</p>
-        </div>
-        <div className="bento-footer">
-          <span className="bento-tag">Tactical Vision & Field Awareness</span>
-        </div>
-      </div>
-
-      {/* 6. GREEK MYTHOLOGY & TRAVEL */}
-      <div className="bento-card bento-card--myth glass-card">
-        <div className="bento-header">
-          <span className="bento-badge">
-            <Compass size={15} className="bento-icon-accent" />
-            {b.mythTitle}
-          </span>
-          <span className="bento-tag">{b.mythSub}</span>
-        </div>
-        <div className="bento-body">
-          <p className="bento-desc">{b.mythDesc}</p>
-        </div>
-        <div className="bento-footer">
-          <span className="bento-tag">European Architecture & History</span>
         </div>
       </div>
 

@@ -1,0 +1,126 @@
+================================================================================
+          ESTRAZIONE COMPLETA TESTI DEL SITO PORTFOLIO (GIORGIO DE SANTIS)
+================================================================================
+
+--------------------------------------------------------------------------------
+1. HERO / HOME (Presentazione Iniziale)
+--------------------------------------------------------------------------------
+[EN] Eyebrow: Hello, I'm
+[EN] Name: Giorgio De Santis
+[EN] Roles: Robotics Engineer, AI Developer, Embedded Systems Specialist, Hardware Designer
+[EN] Bio: Designing autonomous robotic systems — from custom embedded silicon to AI perception.
+[EN] Buttons: Resume | GitHub | LinkedIn
+
+[IT] Eyebrow: Ciao, sono
+[IT] Name: Giorgio De Santis
+[IT] Roles: Robotics Engineer, AI Developer, Embedded Systems Specialist, Hardware Designer
+[IT] Bio: Progettazione di sistemi robotici autonomi — dal silicio embedded ai modelli di percezione AI.
+[IT] Buttons: CV | GitHub | LinkedIn
+
+
+--------------------------------------------------------------------------------
+2. CHI SONO / ABOUT (Profilo Accademico e Tecnico)
+--------------------------------------------------------------------------------
+[EN] Label: Background
+[EN] Title: About Me
+[EN] Text: MSc student in Artificial Intelligence & Robotics at Sapienza University of Rome with a B.Sc. in Electronic Engineering. Focus on ROS2, STM32 microcontrollers, sensor fusion, and PyTorch.
+[EN] Stat 1: MSc | AI & Robotics (Sapienza)
+[EN] Stat 2: 3+ Yrs | ROS2 & SLAM Systems
+[EN] Stat 3: Hardware + AI | Full-Stack Integration
+
+[IT] Label: Profilo
+[IT] Title: Chi Sono
+[IT] Text: Studente magistrale in AI & Robotics alla Sapienza di Roma con laurea triennale in Ingegneria Elettronica. Specializzato in ROS2, microcontrollori STM32, fusione sensoriale e PyTorch.
+[IT] Stat 1: Laurea Mag. | AI & Robotics (Sapienza)
+[IT] Stat 2: 3+ Anni | Sistemi ROS2 & SLAM
+[IT] Stat 3: Hardware + AI | Integrazione Full-Stack
+
+
+--------------------------------------------------------------------------------
+3. STACK TECNOLOGICO & COMPETENZE / SKILLS
+--------------------------------------------------------------------------------
+[EN] Label: Stack
+[EN] Title: Used Tools
+
+[IT] Label: Stack
+[IT] Title: Used Tools
+
+Categorie e Strumenti:
+- Robotica & Simulazione: ROS 2, Gazebo, CoppeliaSim, MathWorks, NVIDIA
+- Elettronica, Embedded & Simulazione Circuiti: STM32, Arduino, Texas Instruments, LTspice, TINA-TI, FreeRTOS, ESP32, KiCad
+- Linguaggi, Sistemi & DevOps: C++, C, Python, Lua, CMake, Linux, Ubuntu, Docker, VS Code, Git, GitHub
+- AI, Deep Learning & Data Science: PyTorch, TensorFlow, Keras, OpenCV, Hugging Face, Weights & Biases, Kaggle, Scikit-Learn, NumPy, Pandas, SciPy, SymPy, Jupyter, Anaconda, Miniconda
+- Matematica & Calcolo Scientifico: Wolfram Mathematica, Gnuplot, R, LaTeX
+
+
+--------------------------------------------------------------------------------
+4. PROGETTI & SHOWCASE / PROJECTS
+--------------------------------------------------------------------------------
+[EN] Label: Showcase
+[EN] Title: Projects
+[EN] Filters: All | Robotics | Machine Learning
+
+[IT] Label: Showcase
+[IT] Title: Progetti
+[IT] Filters: Tutti | Robotica | Machine Learning
+
+
+--------------------------------------------------------------------------------
+5. ISTRUZIONE ED ESPERIENZE / EXPERIENCE & EDUCATION
+--------------------------------------------------------------------------------
+[EN] Section Label: Path
+[EN] Section Title: Experience & Education
+[EN] Experience 1: Robotics & Embedded Engineer @ Autonomous Systems & Robotics Lab (2023 — Present)
+     Desc: Designed and deployed ROS2-based navigation packages on autonomous mobile robots. Integrated sensor fusion (LiDAR + IMU) and custom STM32 motor drive hardware via CAN bus.
+[EN] Experience 2: AI & Computer Vision Developer @ Edge-AI & Perception Research Group (2022 — 2023)
+     Desc: Trained and optimized deep learning models for real-time target detection and semantic segmentation on embedded hardware (NVIDIA Jetson / STM32 Edge-AI).
+[EN] Education 1: M.Sc. in Artificial Intelligence & Robotics @ Sapienza University of Rome (2023 — Present)
+     Desc: Specializing in Autonomous Mobile Robotics, Reinforcement Learning, Multi-Robot Systems, and Computer Vision.
+[EN] Education 2: B.Sc. in Electronic & Computer Engineering @ Sapienza University of Rome (2020 — 2023)
+     Desc: Focus on Microcontroller Architecture, Digital Signals, Embedded C/C++, Circuit Theory, and Automatic Controls.
+
+[IT] Section Label: Percorso
+[IT] Section Title: Istruzione ed Esperienze
+[IT] Esperienza 1: Robotics & Embedded Engineer @ Laboratorio di Robotica Autonoma (2023 — Presente)
+     Desc: Sviluppo di pacchetti di navigazione ROS2 su robot mobili autonomi. Integrazione di fusione sensoriale (LiDAR + IMU) e schede di controllo motori STM32 via bus CAN.
+[IT] Esperienza 2: AI & Computer Vision Developer @ Gruppo di Ricerca Edge-AI (2022 — 2023)
+     Desc: Addestramento e ottimizzazione di modelli di deep learning per object detection e segmentazione in tempo reale su hardware embedded (NVIDIA Jetson / STM32 Edge-AI).
+[IT] Formazione 1: Laurea Magistrale in Artificial Intelligence & Robotics @ Sapienza Università di Roma (2023 — Presente)
+     Desc: Specializzazione in Robotica Mobile Autonoma, Reinforcement Learning, Sistemi Multi-Robot e Computer Vision.
+[IT] Formazione 2: Laurea Triennale in Ingegneria Elettronica ed Informatica @ Sapienza Università di Roma (2020 — 2023)
+     Desc: Focus su Architettura dei Microcontrollori, Segnali Digitali, C/C++ Embedded, Elettronica e Controlli Automatici.
+
+
+--------------------------------------------------------------------------------
+6. ALTRE PASSIONI & INTERESSI / BENTO GRID
+--------------------------------------------------------------------------------
+[EN] Label: Beyond Code
+[EN] Title: Interests
+[EN] Strava: Running & Metrics (4:30 min/km) — Road running & metrics.
+[EN] Chess: Chess.com — Tactics & Rapid
+[EN] Books: Bookshelf & Literature — Classic & 20th Century (Dostoevskij, Pasolini, Miller, Chekhov, Golding)
+[EN] Music: Audio Stream & Metre — Hip-Hop & Production (Kanye West, Drake, Italian rap lyricism)
+[EN] Sports: Football & Futsal — 10+ Years (Tactics & team play)
+[EN] Myth: Mythology & Travel — Classical Archetypes (Greek myth & European architecture)
+
+[IT] Label: Oltre il Codice
+[IT] Title: Interessi
+[IT] Strava: Dati Strava — Corsa & Metriche (4:30 min/km) — Corsa su strada e metriche di allenamento.
+[IT] Chess: Chess.com — Tattica & Rapid
+[IT] Books: Libreria & Letteratura — Classici & Novecento (Dostoevskij, Pasolini, Miller, Chekhov, Golding)
+[IT] Music: Audio & Metrica — Hip-Hop & Produzione (Kanye West, Drake e liricismo rap italiano)
+[IT] Sports: Calcio & Calcio a 5 — 10+ Anni (Tattica e dinamiche di squadra)
+[IT] Myth: Mitologia & Viaggi — Archetipi Classici (Miti greci ed architettura storica europea)
+
+
+--------------------------------------------------------------------------------
+7. CONTATTI / CONTACT
+--------------------------------------------------------------------------------
+[EN] Label: Connect
+[EN] Title: Contacts
+[EN] Buttons: Direct Email | LinkedIn Profile | GitHub Profile | Resume | Send Message
+
+[IT] Label: Contatti
+[IT] Title: Contatti
+[IT] Buttons: Email Diretta | Profilo LinkedIn | Profilo GitHub | CV | Invia Messaggio
+================================================================================

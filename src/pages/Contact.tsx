@@ -51,7 +51,7 @@ export function Contact() {
       <div className="container">
         <span className="section-label">{t.contact.label}</span>
         <h2 className="section-title">{t.contact.title}</h2>
-        <p className="section-sub">{t.contact.sub}</p>
+        {t.contact.sub && <p className="section-sub">{t.contact.sub}</p>}
 
         <div className="contact-layout">
           
