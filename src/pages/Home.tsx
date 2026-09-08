@@ -269,23 +269,20 @@ export function Home() {
         sub={t.skills.sub}
         defaultOpen={true}
       >
-        <div className="skills-marquee-container">
+        <div className="skills-grid">
           {t.skills.categories.map((group, index) => {
-            // Duplicate items 4x to guarantee a seamless continuous marquee loop without gaps
-            const duplicatedItems = [...group.items, ...group.items, ...group.items, ...group.items];
+            const duplicatedItems = [...group.items, ...group.items, ...group.items];
             const isReverse = index % 2 === 1;
 
             return (
-              <div key={group.category} className="skills-marquee-row-wrapper">
-                <div className="skills-marquee-cat-label">
-                  <span>{group.category}</span>
-                </div>
-                <div className="skills-marquee-track-outer">
-                  <div className={`skills-marquee-track ${isReverse ? 'skills-marquee-track--reverse' : ''}`}>
+              <div key={group.category} className="skill-card glass-card">
+                <h3 className="skill-category-title">{group.category}</h3>
+                <div className="patch-marquee-wrapper">
+                  <div className={`patch-marquee-track ${isReverse ? 'patch-marquee-track--reverse' : ''}`}>
                     {duplicatedItems.map((skill, idx) => {
                       const iconInfo = TECH_ICON_SLUG_MAP[skill];
                       return (
-                        <div key={`${skill}-${idx}`} className="skill-tech-pill-marquee">
+                        <div key={`${skill}-${idx}`} className="skill-tech-pill">
                           {iconInfo ? (
                             <img
                               src={`https://cdn.simpleicons.org/${iconInfo.slug}/${iconInfo.color}`}

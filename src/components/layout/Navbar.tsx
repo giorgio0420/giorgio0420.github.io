@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { Home, Code2, GraduationCap, Mail, Globe } from 'lucide-react';
+import { Home, Code2, GraduationCap, Mail, Globe, Menu, X } from 'lucide-react';
+
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
@@ -38,6 +40,7 @@ export function Navbar() {
 
   const scrollToSection = (id: string) => {
     setActiveSection(id);
+    setMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -48,13 +51,13 @@ export function Navbar() {
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="nav-content">
 
-        {/* LOGO GDS - GOLD METALLIC MONOGRAM BADGE */}
-        <button onClick={() => scrollToSection('home')} className="nav-logo nav-logo--badge">
-          <span className="nav-logo-badge-text">GDS</span>
+        {/* LOGO GDS */}
+        <button onClick={() => scrollToSection('home')} className="nav-logo nav-logo--emblem" title="Giorgio De Santis">
+          <span className="nav-logo-text">GDS</span>
         </button>
 
-        {/* NAV LINKS & ACTIONS */}
-        <div className="nav-right">
+        {/* DESKTOP NAV LINKS & ACTIONS */}
+        <div className="nav-right desktop-only-nav">
 
           <nav className="nav-links">
             <button
@@ -105,7 +108,61 @@ export function Navbar() {
 
         </div>
 
+        {/* MOBILE CONTROLS & HAMBURGER TOGGLE BUTTON */}
+        <div className="mobile-nav-controls">
+          <button
+            onClick={toggleLanguage}
+            className="lang-toggle-btn lang-toggle-btn--mobile"
+            title={`Switch to ${language === 'en' ? 'Italian' : 'English'}`}
+          >
+            <Globe size={15} />
+            <span className="lang-code">{language.toUpperCase()}</span>
+          </button>
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="mobile-menu-toggle-btn"
+            aria-label="Toggle navigation menu"
+          >
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+
       </div>
+
+      {/* MOBILE DROPDOWN MENU OVERLAY */}
+      {mobileMenuOpen && (
+        <div className="mobile-dropdown-menu glass-card">
+          <button
+            onClick={() => scrollToSection('home')}
+            className={`mobile-nav-item ${activeSection === 'home' ? 'mobile-nav-item--active' : ''}`}
+          >
+            <Home size={18} />
+            <span>{t.nav.home}</span>
+          </button>
+          <button
+            onClick={() => scrollToSection('projects')}
+            className={`mobile-nav-item ${activeSection === 'projects' ? 'mobile-nav-item--active' : ''}`}
+          >
+            <Code2 size={18} />
+            <span>{t.nav.projects}</span>
+          </button>
+          <button
+            onClick={() => scrollToSection('education')}
+            className={`mobile-nav-item ${activeSection === 'education' ? 'mobile-nav-item--active' : ''}`}
+          >
+            <GraduationCap size={18} />
+            <span>{t.nav.education}</span>
+          </button>
+          <button
+            onClick={() => scrollToSection('contact')}
+            className={`mobile-nav-item ${activeSection === 'contact' ? 'mobile-nav-item--active' : ''}`}
+          >
+            <Mail size={18} />
+            <span>{t.nav.contacts}</span>
+          </button>
+        </div>
+      )}
     </header>
   );
 }

@@ -39,95 +39,116 @@ export const ChessLogoIcon: React.FC<{ size?: number; className?: string }> = ({
   </svg>
 );
 
-export const GoldEmblemIcon: React.FC<{ size?: number; className?: string }> = ({ size = 24, className = '' }) => {
+export const GoldEmblemIcon: React.FC<{ size?: number; className?: string }> = ({ size = 28, className = '' }) => {
   const id = React.useId().replace(/:/g, '');
-  const mainGrad = `gold-main-${id}`;
-  const lightGrad = `gold-light-${id}`;
-  const darkGrad = `gold-dark-${id}`;
-  const innerGrad = `gold-inner-${id}`;
-  const glowFilter = `gold-glow-${id}`;
+  const goldBase = `gold-base-${id}`;
+  const goldLight = `gold-light-${id}`;
+  const goldDark = `gold-dark-${id}`;
+  const goldSpecular = `gold-specular-${id}`;
 
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 64 64"
+      viewBox="0 0 500 500"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      style={{ display: 'inline-block', verticalAlign: 'middle', filter: `url(#${glowFilter})` }}
+      style={{ display: 'inline-block', verticalAlign: 'middle', filter: 'drop-shadow(0 2px 6px rgba(217, 119, 6, 0.4))' }}
     >
       <defs>
-        <linearGradient id={mainGrad} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FFF9E6" />
-          <stop offset="20%" stopColor="#FBBF24" />
-          <stop offset="50%" stopColor="#D97706" />
-          <stop offset="80%" stopColor="#92400E" />
-          <stop offset="100%" stopColor="#451A03" />
+        <linearGradient id={goldBase} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FFFBEB" />
+          <stop offset="25%" stopColor="#FCD34D" />
+          <stop offset="55%" stopColor="#D97706" />
+          <stop offset="85%" stopColor="#92400E" />
+          <stop offset="100%" stopColor="#361302" />
         </linearGradient>
 
-        <linearGradient id={lightGrad} x1="0%" y1="0%" x2="100%" y2="0%">
+        <linearGradient id={goldLight} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#FFFFFF" />
           <stop offset="40%" stopColor="#FEF08A" />
           <stop offset="100%" stopColor="#F59E0B" />
         </linearGradient>
 
-        <linearGradient id={darkGrad} x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#78350F" />
-          <stop offset="50%" stopColor="#B45309" />
-          <stop offset="100%" stopColor="#FCD34D" />
+        <linearGradient id={goldDark} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#B45309" />
+          <stop offset="50%" stopColor="#78350F" />
+          <stop offset="100%" stopColor="#1E0B02" />
         </linearGradient>
 
-        <radialGradient id={innerGrad} cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#FFFBEB" />
-          <stop offset="60%" stopColor="#F59E0B" />
-          <stop offset="100%" stopColor="#78350F" />
-        </radialGradient>
-
-        <filter id={glowFilter} x="-30%" y="-30%" width="160%" height="160%">
-          <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#F59E0B" floodOpacity="0.75" />
-        </filter>
+        <linearGradient id={goldSpecular} x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#FFFFFF" />
+          <stop offset="50%" stopColor="#FDE047" />
+          <stop offset="100%" stopColor="#D97706" />
+        </linearGradient>
       </defs>
 
-      <g>
-        {/* Outer Ornate Square Frame with Corner Fleur-de-lis Spikes */}
-        <path
-          d="M32 2 L38 10 L48 6 L46 16 L58 18 L52 28 L62 32 L52 36 L58 46 L46 48 L48 58 L38 54 L32 62 L26 54 L16 58 L18 48 L6 46 L12 36 L2 32 L12 28 L6 18 L18 16 L16 6 L26 10 Z"
-          fill={`url(#${mainGrad})`}
-          stroke="#FFF9E6"
-          strokeWidth="0.8"
-        />
+      <g transform="translate(250, 250)">
+        {/* 4 DIAGONAL CRESTS (Top-Right, Bottom-Right, Bottom-Left, Top-Left) */}
+        {[45, 135, 225, 315].map((angle, idx) => (
+          <g key={angle} transform={`rotate(${angle})`}>
+            {/* Scalloped Crest Outer Outline & Shell */}
+            <path
+              d="M 0,-85 
+                 C -25,-95 -50,-115 -75,-135 
+                 C -95,-115 -115,-95 -135,-75 
+                 C -115,-50 -95,-25 -85,0 
+                 C -70,-15 -55,-40 -40,-60 
+                 C -25,-40 -35,-20 -40,0 Z"
+              fill={`url(#${goldBase})`}
+              stroke="#FFFBEB"
+              strokeWidth="2"
+            />
+            <path
+              d="M 0,-85 
+                 C 25,-95 50,-115 75,-135 
+                 C 95,-115 115,-95 135,-75 
+                 C 115,-50 95,-25 85,0 
+                 C 70,-15 55,-40 40,-60 
+                 C 25,-40 35,-20 40,0 Z"
+              fill={`url(#${goldDark})`}
+              stroke="#FFFBEB"
+              strokeWidth="2"
+            />
 
-        {/* Ornate Filigree Corner Loops */}
-        <rect
-          x="12"
-          y="12"
-          width="40"
-          height="40"
-          rx="4"
-          fill="none"
-          stroke={`url(#${lightGrad})`}
-          strokeWidth="2"
-        />
+            {/* Inward Curved Claws/Horns */}
+            <path d="M -25,-35 C -35,-25 -25,-10 -10,-15 C -5,-10 -10,-5 -20,-10 Z" fill={`url(#${goldLight})`} />
+            <path d="M 25,-35 C 35,-25 25,-10 10,-15 C 5,-10 10,-5 20,-10 Z" fill={`url(#${goldLight})`} />
 
-        {/* Inner Diamond Star Mesh */}
-        <path
-          d="M32 8 L37 22 L52 17 L42 27 L56 32 L42 37 L52 47 L37 42 L32 56 L27 42 L12 47 L22 37 L8 32 L22 27 L12 17 L27 22 Z"
-          fill={`url(#${darkGrad})`}
-        />
+            {/* Embossed Geometric Symbols inside crest */}
+            <circle cx="-45" cy="-75" r="9" fill={`url(#${goldSpecular})`} stroke="#451A03" strokeWidth="1.5" />
+            <circle cx="45" cy="-75" r="9" fill={`url(#${goldSpecular})`} stroke="#451A03" strokeWidth="1.5" />
 
-        {/* Central 3D Faceted Crystal Gem */}
-        <polygon points="32,16 44,32 32,48 20,32" fill={`url(#${innerGrad})`} stroke="#FFF9E6" strokeWidth="1" />
+            {idx % 2 === 0 ? (
+              <rect x="-9" y="-84" width="18" height="18" fill={`url(#${goldSpecular})`} transform="rotate(45, 0, -75)" stroke="#451A03" strokeWidth="1.5" />
+            ) : (
+              <polygon points="0,-86 -10,-68 10,-68" fill={`url(#${goldSpecular})`} stroke="#451A03" strokeWidth="1.5" />
+            )}
+          </g>
+        ))}
 
-        {/* Facet Top-Left Reflection */}
-        <polygon points="32,16 44,32 32,32" fill={`url(#${lightGrad})`} opacity="0.9" />
+        {/* 4 CARDINAL FACETED 3D SPIKES (Top, Right, Bottom, Left) */}
+        {[0, 90, 180, 270].map((angle) => (
+          <g key={angle} transform={`rotate(${angle})`}>
+            {/* Top Tip - Left Facet (Shadow) */}
+            <polygon points="0,-225 -55,-155 0,-165" fill={`url(#${goldDark})`} />
+            {/* Top Tip - Right Facet (Highlight) */}
+            <polygon points="0,-225 55,-155 0,-165" fill={`url(#${goldSpecular})`} />
 
-        {/* Facet Bottom-Right Shadow */}
-        <polygon points="32,32 44,32 32,48" fill="#451A03" opacity="0.7" />
+            {/* Middle Facet Left */}
+            <polygon points="-55,-155 0,-165 0,-105 -45,-120" fill={`url(#${goldBase})`} />
+            {/* Middle Facet Right */}
+            <polygon points="55,-155 0,-165 0,-105 45,-120" fill={`url(#${goldLight})`} />
 
-        {/* Center Radiant Core */}
-        <circle cx="32" cy="32" r="5" fill="#FFFFFF" opacity="0.95" />
-        <circle cx="32" cy="32" r="2.5" fill="#FEF08A" />
+            {/* Sharp Center Spine */}
+            <line x1="0" y1="-225" x2="0" y2="-105" stroke="#FFFFFF" strokeWidth="2.5" opacity="0.8" />
+          </g>
+        ))}
+
+        {/* Center Void Cross / Square */}
+        <polygon points="0,-25 25,0 0,25 -25,0" fill="#000000" />
+        <polygon points="0,-12 12,0 0,12 -12,0" fill={`url(#${goldSpecular})`} />
       </g>
     </svg>
   );
