@@ -6,7 +6,7 @@ export function ExperienceEducation() {
 
   return (
     <div className="timeline-grid timeline-grid--single">
-      {/* ACADEMIC BACKGROUND */}
+      {/* BACKGROUND */}
       <div className="timeline-column">
         <div className="timeline-header">
           <h2 className="timeline-column-title">

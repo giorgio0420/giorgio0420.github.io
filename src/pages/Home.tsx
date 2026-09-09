@@ -154,13 +154,17 @@ export function Home() {
           <div className="hero-text">
             <p className="hero-eyebrow">{t.hero.eyebrow}</p>
             <h1 className="hero-title">
-              <span className="hero-name">{t.hero.name}</span>
+              <span className="hero-name">
+                {t.hero.name.split(' ')[0]}
+                <br />
+                {t.hero.name.split(' ').slice(1).join(' ')}
+              </span>
             </h1>
             
             <p className="hero-role">
               <Typewriter
                 words={t.hero.roles}
-                loop={1}
+                loop={0}
                 cursor
                 cursorStyle="|"
                 typeSpeed={60}
@@ -243,68 +247,46 @@ export function Home() {
           {t.about.text2 && <p className="about-text">{t.about.text2}</p>}
           {t.about.text3 && <p className="about-text">{t.about.text3}</p>}
           
-          <div className="about-meta">
-            <div className="about-stat">
-              <span className="stat-num">{t.about.stat1Number}</span>
-              <span className="stat-label">{t.about.stat1Label}</span>
-            </div>
-            <div className="about-stat">
-              <span className="stat-num">{t.about.stat2Number}</span>
-              <span className="stat-label">{t.about.stat2Label}</span>
-            </div>
-            <div className="about-stat">
-              <span className="stat-num">{t.about.stat3Number}</span>
-              <span className="stat-label">{t.about.stat3Label}</span>
+          <div className="about-tools-divider">
+            <h4 className="about-tools-title">{t.skills.title}</h4>
+            <div className="skills-grid">
+              {t.skills.categories.map((group, index) => {
+                const duplicatedItems = [...group.items, ...group.items, ...group.items];
+                const isReverse = index % 2 === 1;
+
+                return (
+                  <div key={group.category} className="skill-card glass-card">
+                    <h3 className="skill-category-title">{group.category}</h3>
+                    <div className="patch-marquee-wrapper">
+                      <div className={`patch-marquee-track ${isReverse ? 'patch-marquee-track--reverse' : ''}`}>
+                        {duplicatedItems.map((skill, idx) => {
+                          const iconInfo = TECH_ICON_SLUG_MAP[skill];
+                          return (
+                            <div key={`${skill}-${idx}`} className="skill-tech-pill">
+                              {iconInfo ? (
+                                <img
+                                  src={`https://cdn.simpleicons.org/${iconInfo.slug}/${iconInfo.color}`}
+                                  alt={`${skill} icon`}
+                                  className="skill-tech-icon"
+                                  loading="lazy"
+                                  onError={(e) => {
+                                    (e.target as HTMLImageElement).style.display = 'none';
+                                  }}
+                                />
+                              ) : (
+                                <span className="skill-dot" />
+                              )}
+                              <span className="skill-tech-name">{skill}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
-        </div>
-      </CollapsibleSection>
-
-      {/* 3. SKILLS SECTION — CONTINUOUS THEMATIC MARQUEE CHAINS */}
-      <CollapsibleSection
-        id="skills"
-        className="section--skills"
-        label={t.skills.label}
-        title={t.skills.title}
-        sub={t.skills.sub}
-        defaultOpen={true}
-      >
-        <div className="skills-grid">
-          {t.skills.categories.map((group, index) => {
-            const duplicatedItems = [...group.items, ...group.items, ...group.items];
-            const isReverse = index % 2 === 1;
-
-            return (
-              <div key={group.category} className="skill-card glass-card">
-                <h3 className="skill-category-title">{group.category}</h3>
-                <div className="patch-marquee-wrapper">
-                  <div className={`patch-marquee-track ${isReverse ? 'patch-marquee-track--reverse' : ''}`}>
-                    {duplicatedItems.map((skill, idx) => {
-                      const iconInfo = TECH_ICON_SLUG_MAP[skill];
-                      return (
-                        <div key={`${skill}-${idx}`} className="skill-tech-pill">
-                          {iconInfo ? (
-                            <img
-                              src={`https://cdn.simpleicons.org/${iconInfo.slug}/${iconInfo.color}`}
-                              alt={`${skill} icon`}
-                              className="skill-tech-icon"
-                              loading="lazy"
-                              onError={(e) => {
-                                (e.target as HTMLImageElement).style.display = 'none';
-                              }}
-                            />
-                          ) : (
-                            <span className="skill-dot" />
-                          )}
-                          <span className="skill-tech-name">{skill}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
         </div>
       </CollapsibleSection>
 

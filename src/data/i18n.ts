@@ -11,8 +11,8 @@ export const translations = {
     hero: {
       eyebrow: "Hello, I'm",
       name: 'Giorgio De Santis',
-      roles: ['Robotics Engineer', 'AI Developer'],
-      bio: 'Autonomous robotic systems, computer vision, and deep learning architectures, with an electronic background.',
+      roles: ['Robotics Engineer', 'AI Developer', 'Electronics Engineer (B.Sc.)'],
+      bio: 'Expert in autonomous robotic systems, computer vision, and deep learning architectures, with an electronic background.',
       github: 'GitHub',
       linkedin: 'LinkedIn',
       downloadCv: 'Resume',
@@ -27,8 +27,8 @@ export const translations = {
       title: 'About Me',
       sub: '',
       text1: 'MSc student in Artificial Intelligence & Robotics at Sapienza University of Rome, with a B.Sc. in Electronic Engineering.',
-      text2: 'My work spans Computer Vision and Deep Learning — focusing on semantic segmentation, classification, and regression applied to medical, physical, and visual data.',
-      text3: 'In robotics, I develop autonomous control and obstacle avoidance algorithms for drones (UAVs) and robotic manipulators (KUKA), combining C/C++ embedded development (STM32, FreeRTOS) with Python, PyTorch, and ROS2.',
+      text2: 'My work focuses on robotic simulations, Computer Vision, and Deep Learning. I have developed semantic segmentation, classification, and regression models for medical, physical, and complex image data using ViT, CNN, U-Net, and Swin Transformers.',
+      text3: 'In robotics, I develop autonomous navigation and obstacle avoidance algorithms for drones (UAVs) and robotic manipulators (KUKA), working with ROS2, CoppeliaSim, and MATLAB.',
       stat1Number: 'M.Sc.',
       stat1Label: 'AI & Robotics (Sapienza)',
       stat2Number: 'B.Sc.',
@@ -60,9 +60,9 @@ export const translations = {
     },
     experienceEducation: {
       sectionLabel: 'Education',
-      sectionTitle: 'Academic Background',
+      sectionTitle: 'Background',
       sectionSub: '',
-      educationLabel: 'Academic Background',
+      educationLabel: 'Background',
       educationTitle: 'Education & Qualifications',
       educationList: [
         {
@@ -81,7 +81,7 @@ export const translations = {
     },
     passions: {
       label: 'Beyond Code',
-      title: 'Interests & Recommendations',
+      title: 'Interests',
       sub: '',
       bento: {
         stravaTitle: 'Strava Data',
@@ -125,8 +125,8 @@ export const translations = {
     hero: {
       eyebrow: 'Ciao, sono',
       name: 'Giorgio De Santis',
-      roles: ['Robotics Engineer', 'AI Developer'],
-      bio: 'Sistemi robotici autonomi, computer vision e architetture di deep learning, con background elettronico.',
+      roles: ['Robotics Engineer', 'AI Developer', 'Electronics Engineer (B.Sc.)'],
+      bio: 'Esperto di sistemi robotici autonomi, computer vision e architetture di deep learning, con background elettronico.',
       github: 'GitHub',
       linkedin: 'LinkedIn',
       downloadCv: 'Resume',
@@ -141,8 +141,8 @@ export const translations = {
       title: 'Chi Sono',
       sub: '',
       text1: 'Sono uno studente magistrale in Artificial Intelligence & Robotics alla Sapienza di Roma, dopo una laurea triennale in Ingegneria Elettronica.',
-      text2: 'Il mio percorso si concentra su Computer Vision e Deep Learning — sviluppando modelli di segmentazione semantica, classificazione e regressione per dati medici, fisici e immagini complesse.',
-      text3: 'In ambito robotico sviluppo algoritmi per la navigazione autonoma e l\'evitamento ostacoli su droni (UAV) e bracci robotici (KUKA), unendo la programmazione C/C++ ed embedded (STM32, FreeRTOS) a Python, PyTorch e ROS2.',
+      text2: 'Il mio percorso si concentra su simulazioni robotiche, Computer Vision e Deep Learning. Ho sviluppato modelli di segmentazione semantica, classificazione e regressione per dati medici, fisici e immagini complesse con ViT, CNN, U-Net e Swin Transformer.',
+      text3: 'In ambito robotico sviluppo algoritmi per la navigazione autonoma e l\'evitamento ostacoli su droni (UAV) e bracci robotici (KUKA), in ROS2, CoppeliaSim e MATLAB.',
       stat1Number: 'Laurea Mag.',
       stat1Label: 'AI & Robotics (Sapienza)',
       stat2Number: 'Laurea Triennale',
@@ -195,7 +195,7 @@ export const translations = {
     },
     passions: {
       label: 'Oltre il Codice',
-      title: 'Interessi & Consigli',
+      title: 'Interessi',
       sub: '',
       bento: {
         stravaTitle: 'Dati Strava',

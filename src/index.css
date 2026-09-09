@@ -656,13 +656,20 @@ ul {
   margin-bottom: 1.25rem;
 }
 
-.about-meta {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  margin-top: 2.5rem;
-  padding-top: 2rem;
+.about-tools-divider {
+  margin-top: 2.2rem;
+  padding-top: 1.8rem;
   border-top: 1px solid var(--border);
+}
+
+.about-tools-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
 }
 
 .about-stat {
@@ -823,6 +830,8 @@ ul {
 .lang-dot--matlab { background: #e16737; box-shadow: 0 0 8px rgba(225, 103, 55, 0.6); }
 .lang-dot--jupyter { background: #DA5B0B; box-shadow: 0 0 8px rgba(218, 91, 11, 0.6); }
 .lang-dot--c { background: #555555; box-shadow: 0 0 8px rgba(85, 85, 85, 0.6); }
+.lang-dot--coppelia { background: #00A3E0; box-shadow: 0 0 8px rgba(0, 163, 224, 0.6); }
+.lang-dot--lua { background: #000080; box-shadow: 0 0 8px rgba(0, 0, 128, 0.6); }
 
 /* ────────────────────────────────────────────────
    TIMELINE (EXPERIENCE & EDUCATION)

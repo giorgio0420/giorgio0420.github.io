@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { KNOWN_REPO_GIFS, type Project } from '../../data/projects';
+import { KNOWN_REPO_GIFS, REPO_LANGUAGE_OVERRIDES, type Project } from '../../data/projects';
 import { GithubIcon } from '../common/Icons';
 import { Star, GitFork, Bot, Code2, Cpu } from 'lucide-react';
 
@@ -10,6 +10,8 @@ interface Props {
 
 export function ProjectCard({ project }: Props) {
   const { t } = useLanguage();
+
+  const displayLanguage = REPO_LANGUAGE_OVERRIDES[project.name] || project.language || 'Code';
 
   const candidates = KNOWN_REPO_GIFS[project.name] || (project.gifUrl ? [project.gifUrl] : [
     `https://raw.githubusercontent.com/giorgio0420/${project.name}/main/gif.gif`,
@@ -33,6 +35,8 @@ export function ProjectCard({ project }: Props) {
   const getLanguageDotClass = (lang?: string) => {
     if (!lang) return 'lang-dot';
     const l = lang.toLowerCase();
+    if (l.includes('coppelia')) return 'lang-dot lang-dot--coppelia';
+    if (l.includes('lua')) return 'lang-dot lang-dot--lua';
     if (l.includes('python')) return 'lang-dot lang-dot--python';
     if (l.includes('c++') || l.includes('cpp')) return 'lang-dot lang-dot--cpp';
     if (l.includes('matlab')) return 'lang-dot lang-dot--matlab';
@@ -60,8 +64,8 @@ export function ProjectCard({ project }: Props) {
       {/* CARD HEADER */}
       <div className="project-card-header">
         <div className="project-category-badge">
-          <span className={getLanguageDotClass(project.language)} />
-          <span>{project.language || 'Code'}</span>
+          <span className={getLanguageDotClass(displayLanguage)} />
+          <span>{displayLanguage}</span>
         </div>
         {project.fork && (
           <span className="project-metrics-badge">Fork</span>
@@ -74,17 +78,6 @@ export function ProjectCard({ project }: Props) {
       <p className="project-desc">
         {project.description || 'No description provided for this repository.'}
       </p>
-
-      {/* TOPICS / TAGS */}
-      {project.topics && project.topics.length > 0 && (
-        <div className="project-stack">
-          {project.topics.slice(0, 5).map((topic) => (
-            <span key={topic} className="tech-tag">
-              #{topic}
-            </span>
-          ))}
-        </div>
-      )}
 
       {/* FOOTER & METRICS */}
       <div className="project-card-footer">

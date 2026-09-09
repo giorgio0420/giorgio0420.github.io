@@ -31,6 +31,12 @@ export const KNOWN_REPO_GIFS: Record<string, string[]> = {
   ],
 };
 
+// Custom language display overrides for specific repos
+export const REPO_LANGUAGE_OVERRIDES: Record<string, string> = {
+  'Drone-UAV-Obstacle-Avoidance': 'CoppeliaSim / Lua',
+  'KUKA-iiwa-Obstacle-Avoidance': 'CoppeliaSim / MATLAB',
+};
+
 // Giorgio's actual real GitHub repositories (used as instant fallback if offline/rate-limited)
 export const REAL_GITHUB_REPOS_FALLBACK: Project[] = [
   {

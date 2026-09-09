@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { REAL_GITHUB_REPOS_FALLBACK, type Project } from '../data/projects';
+import { REAL_GITHUB_REPOS_FALLBACK, REPO_LANGUAGE_OVERRIDES, type Project } from '../data/projects';
 import { ProjectCard } from '../components/projects/ProjectCard';
 
 const CACHE_KEY = 'giorgio0420_github_repos_v3';
@@ -63,8 +63,9 @@ export function Projects() {
   const filteredProjects = projects.filter((p) => {
     if (filter === 'all') return true;
     const lang = (p.language || '').toLowerCase();
-    if (filter === 'matlab') return lang.includes('matlab');
-    if (filter === 'python') return lang.includes('python');
+    const customLang = (REPO_LANGUAGE_OVERRIDES[p.name] || '').toLowerCase();
+    if (filter === 'matlab') return lang.includes('matlab') || customLang.includes('coppelia');
+    if (filter === 'python') return lang.includes('python') || customLang.includes('python');
     if (filter === 'notebook') return lang.includes('notebook') || lang.includes('jupyter');
     return true;
   });
