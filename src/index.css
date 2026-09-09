@@ -910,6 +910,27 @@ ul {
   line-height: 1.6;
 }
 
+.timeline-thesis-badge {
+  margin-top: 0.85rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent-warm);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.08);
+}
+
+.thesis-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
 /* ────────────────────────────────────────────────
    PROJECTS (PAGE 2)
 ──────────────────────────────────────────────── */

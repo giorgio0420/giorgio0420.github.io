@@ -74,8 +74,9 @@ export const translations = {
         {
           degree: 'B.Sc. in Electronic Engineering',
           institution: 'Sapienza University of Rome',
-          period: '2020 — 2023',
-          desc: 'Focus on Microcontroller Architecture, Digital Signals, Embedded C/C++, Circuit Theory, and Automatic Controls.',
+          period: '2020 — 2024',
+          desc: 'Focus on Microcontroller Architecture, Digital Signal Processing, Embedded C/C++, Circuit Theory, and Automatic Controls.',
+          thesis: 'B.Sc. Thesis: "Machine Learning Applications in Electromagnetics"',
         },
       ],
     },
@@ -192,8 +193,9 @@ export const translations = {
         {
           degree: 'Laurea Triennale in Ingegneria Elettronica',
           institution: 'Sapienza Università di Roma',
-          period: '2020 — 2023',
-          desc: 'Focus su Architettura dei Microcontrollori, Segnali Digitali, C/C++ Embedded, Elettronica e Controlli Automatici.',
+          period: '2020 — 2024',
+          desc: 'Focus su Architettura dei Microcontrollori, Segnali Digitali, C/C++ Embedded, Elettronica ed Elettromagnetismo Applicato.',
+          thesis: 'Tesi di Laurea: "Applicazioni del Machine Learning per l’Elettromagnetismo"',
         },
       ],
     },

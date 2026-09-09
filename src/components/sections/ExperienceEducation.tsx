@@ -1,5 +1,5 @@
 import { useLanguage } from '../../context/LanguageContext';
-import { Briefcase, GraduationCap, Calendar, MapPin } from 'lucide-react';
+import { Briefcase, GraduationCap, Calendar, MapPin, BookOpen } from 'lucide-react';
 
 export function ExperienceEducation() {
   const { t } = useLanguage();
@@ -30,6 +30,12 @@ export function ExperienceEducation() {
                 {edu.institution}
               </div>
               <p className="timeline-desc">{edu.desc}</p>
+              {(edu as any).thesis && (
+                <div className="timeline-thesis-badge">
+                  <BookOpen size={14} className="thesis-icon" />
+                  <span>{(edu as any).thesis}</span>
+                </div>
+              )}
             </div>
           ))}
         </div>
