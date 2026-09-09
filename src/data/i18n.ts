@@ -98,6 +98,10 @@ export const translations = {
         recommendationsDesc: 'Personal recommendations on literature, cinema, philosophy, and Substack notes.',
         recommendationsAuthors: ['Dostoevskij', 'Pasolini', 'Henry Miller', 'Chekhov', 'Substack'],
         recommendationsLink: 'Explore Recommendations',
+
+        androidTitle: 'Keep Android Open',
+        androidSub: 'Software Freedom Campaign',
+        androidDesc: 'Your phone is about to stop being yours.',
       },
     },
     contact: {
@@ -212,6 +216,10 @@ export const translations = {
         recommendationsDesc: 'Consigli personali su letteratura, cinema, saggi e note su Substack.',
         recommendationsAuthors: ['Dostoevskij', 'Pasolini', 'Henry Miller', 'Chekhov', 'Substack'],
         recommendationsLink: 'Esplora i Consigli',
+
+        androidTitle: 'Keep Android Open',
+        androidSub: 'Campagna per la Libertà Digitale',
+        androidDesc: 'Il tuo telefono sta per smettere di essere tuo.',
       },
     },
     contact: {

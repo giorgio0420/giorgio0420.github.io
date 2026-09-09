@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { ChessLogoIcon } from '../common/Icons';
-import { BookOpen, Music, ExternalLink, Zap, Swords } from 'lucide-react';
+import { BookOpen, Music, ExternalLink, Zap, Swords, Smartphone, AlertTriangle, ShieldAlert } from 'lucide-react';
 
 interface ChessStats {
   rapid?: number;
@@ -126,7 +126,49 @@ export function BentoGrid() {
         </div>
       </div>
 
-      {/* 3. CONSIGLI & SUBSTACK (Books, Film, Essays) */}
+      {/* 3. KEEP ANDROID OPEN CAMPAIGN CARD */}
+      <div className="bento-card bento-card--android glass-card">
+        <div className="bento-header">
+          <span className="bento-badge bento-badge--android">
+            <span className="bento-pulse bento-pulse--red" />
+            <ShieldAlert size={16} className="bento-icon-android" />
+            {b.androidTitle}
+          </span>
+          <a
+            href="https://keepandroidopen.org/it/"
+            target="_blank"
+            rel="noreferrer"
+            className="bento-link-hint"
+          >
+            keepandroidopen.org <ExternalLink size={12} />
+          </a>
+        </div>
+
+        <div className="bento-body">
+          <div className="bento-alert-box">
+            <AlertTriangle size={22} className="bento-icon-danger-flashing" />
+            <p className="bento-desc bento-desc--android-alert">
+              "{b.androidDesc}"
+            </p>
+          </div>
+        </div>
+
+        <div className="bento-footer">
+          <span className="bento-highlight-text" style={{ fontSize: '0.82rem', color: '#ef4444', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+            <AlertTriangle size={13} /> {b.androidSub}
+          </span>
+          <a
+            href="https://keepandroidopen.org/it/"
+            target="_blank"
+            rel="noreferrer"
+            className="bento-username-tag bento-tag--android"
+          >
+            Keep Android Open <ExternalLink size={11} />
+          </a>
+        </div>
+      </div>
+
+      {/* 4. CONSIGLI & SUBSTACK (Books, Film, Essays) */}
       <div className="bento-card bento-card--recommendations glass-card">
         <div className="bento-header">
           <span className="bento-badge">
@@ -155,7 +197,7 @@ export function BentoGrid() {
         </div>
       </div>
 
-      {/* 4. MUSIC & AUDIO WAVEFORM */}
+      {/* 5. MUSIC & AUDIO WAVEFORM */}
       <div className="bento-card bento-card--music glass-card">
         <div className="bento-header">
           <span className="bento-badge">
