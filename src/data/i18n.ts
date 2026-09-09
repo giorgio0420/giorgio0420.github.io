@@ -68,13 +68,13 @@ export const translations = {
         {
           degree: 'M.Sc. in Artificial Intelligence & Robotics',
           institution: 'Sapienza University of Rome',
-          period: '2023 — Present',
+          period: 'Present',
           desc: 'Specializing in Autonomous Mobile Robotics, Reinforcement Learning, Multi-Robot Systems, and Computer Vision.',
         },
         {
           degree: 'B.Sc. in Electronic Engineering',
           institution: 'Sapienza University of Rome',
-          period: '2020 — 2024',
+          period: '2024',
           desc: 'Focus on Microcontroller Architecture, Digital Signal Processing, Embedded C/C++, Circuit Theory, and Automatic Controls.',
           thesis: 'B.Sc. Thesis: "Machine Learning Applications in Electromagnetics"',
         },
@@ -187,13 +187,13 @@ export const translations = {
         {
           degree: 'Laurea Magistrale in Artificial Intelligence & Robotics',
           institution: 'Sapienza Università di Roma',
-          period: '2023 — Presente',
+          period: 'In corso',
           desc: 'Specializzazione in Robotica Mobile Autonoma, Reinforcement Learning, Sistemi Multi-Robot e Computer Vision.',
         },
         {
           degree: 'Laurea Triennale in Ingegneria Elettronica',
           institution: 'Sapienza Università di Roma',
-          period: '2020 — 2024',
+          period: '2024',
           desc: 'Focus su Architettura dei Microcontrollori, Segnali Digitali, C/C++ Embedded, Elettronica ed Elettromagnetismo Applicato.',
           thesis: 'Tesi di Laurea: "Applicazioni del Machine Learning per l’Elettromagnetismo"',
         },
