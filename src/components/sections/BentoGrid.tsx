@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { ChessLogoIcon } from '../common/Icons';
-import { BookOpen, Music, ExternalLink, Zap, Swords, Smartphone, AlertTriangle, ShieldAlert } from 'lucide-react';
+import { BookOpen, ExternalLink, Zap, Swords, AlertTriangle, ShieldAlert } from 'lucide-react';
 
 interface ChessStats {
   rapid?: number;
@@ -168,61 +168,42 @@ export function BentoGrid() {
         </div>
       </div>
 
-      {/* 4. CONSIGLI & SUBSTACK (Books, Film, Essays) */}
-      <div className="bento-card bento-card--recommendations glass-card">
+      {/* 4. QULTURA - PERSONAL INFORMATION PIPELINE */}
+      <div className="bento-card bento-card--qultura glass-card">
         <div className="bento-header">
           <span className="bento-badge">
             <BookOpen size={15} className="bento-icon-accent" />
-            {b.recommendationsTitle}
+            {b.qulturaTitle}
           </span>
-          <span className="bento-tag">{b.recommendationsSub}</span>
+          <a
+            href="https://github.com/giorgio0420/qultura"
+            target="_blank"
+            rel="noreferrer"
+            className="bento-username-tag"
+          >
+            {b.qulturaLink}
+            <ExternalLink size={12} style={{ marginLeft: '0.25rem' }} />
+          </a>
         </div>
         <div className="bento-body">
-          <p className="bento-desc">{b.recommendationsDesc}</p>
-          <div className="bento-authors-list" style={{ marginTop: '0.6rem' }}>
-            {b.recommendationsAuthors.map((author) => (
-              <span key={author} className="bento-author-pill">
-                {author}
-              </span>
-            ))}
-          </div>
+          <img
+            src="https://raw.githubusercontent.com/giorgio0420/qultura/main/preview.gif"
+            alt="Qultura daily digest"
+            loading="lazy"
+            style={{
+              width: '100%',
+              maxHeight: '110px',
+              objectFit: 'cover',
+              borderRadius: '8px',
+              marginBottom: '0.6rem',
+            }}
+          />
+          <p className="bento-desc">{b.qulturaDesc}</p>
         </div>
         <div className="bento-footer">
-          <span className="bento-highlight-text" style={{ fontSize: '0.82rem', color: 'var(--text-sub)' }}>
-            Substack & Personal Selection
-          </span>
-          <span className="bento-username-tag" style={{ background: 'rgba(212, 149, 106, 0.12)', borderColor: 'rgba(212, 149, 106, 0.3)', color: 'var(--accent-warm)' }}>
-            Coming Soon
-          </span>
+          <span className="bento-tag">{b.qulturaSub}</span>
         </div>
       </div>
-
-      {/* 5. MUSIC & AUDIO WAVEFORM */}
-      <div className="bento-card bento-card--music glass-card">
-        <div className="bento-header">
-          <span className="bento-badge">
-            <Music size={15} className="bento-icon-accent" />
-            {b.musicTitle}
-          </span>
-          <div className="bento-music-bars">
-            <span className="bar bar-1" />
-            <span className="bar bar-2" />
-            <span className="bar bar-3" />
-          </div>
-        </div>
-        <div className="bento-body">
-          <p className="bento-desc">{b.musicDesc}</p>
-          <div className="bento-authors-list" style={{ marginTop: '0.5rem' }}>
-            <span className="bento-author-pill">Kanye West</span>
-            <span className="bento-author-pill">Drake</span>
-            <span className="bento-author-pill">Italian Rap</span>
-          </div>
-        </div>
-        <div className="bento-footer">
-          <span className="bento-tag">{b.musicSub}</span>
-        </div>
-      </div>
-
     </div>
   );
 }

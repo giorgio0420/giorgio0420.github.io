@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { KNOWN_REPO_GIFS, REPO_LANGUAGE_OVERRIDES, type Project } from '../../data/projects';
 import { GithubIcon } from '../common/Icons';
-import { Star, GitFork, Bot, Code2, Cpu } from 'lucide-react';
+import { Star, GitFork } from 'lucide-react';
 
 interface Props {
   project: Project;
@@ -14,8 +14,9 @@ export function ProjectCard({ project }: Props) {
   const displayLanguage = REPO_LANGUAGE_OVERRIDES[project.name] || project.language || 'Code';
 
   const candidates = KNOWN_REPO_GIFS[project.name] || (project.gifUrl ? [project.gifUrl] : [
-    `https://raw.githubusercontent.com/giorgio0420/${project.name}/main/gif.gif`,
     `https://raw.githubusercontent.com/giorgio0420/${project.name}/main/preview.gif`,
+    `https://raw.githubusercontent.com/giorgio0420/${project.name}/main/gif.gif`,
+    `https://raw.githubusercontent.com/giorgio0420/${project.name}/master/preview.gif`,
     `https://raw.githubusercontent.com/giorgio0420/${project.name}/master/gif.gif`,
   ]);
 

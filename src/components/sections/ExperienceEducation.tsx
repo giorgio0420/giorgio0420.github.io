@@ -1,5 +1,5 @@
 import { useLanguage } from '../../context/LanguageContext';
-import { Briefcase, GraduationCap, Calendar, MapPin, BookOpen } from 'lucide-react';
+import { GraduationCap, Calendar, MapPin, BookOpen } from 'lucide-react';
 
 export function ExperienceEducation() {
   const { t } = useLanguage();

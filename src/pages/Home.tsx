@@ -5,7 +5,7 @@ import { CollapsibleSection } from '../components/common/CollapsibleSection';
 import { ExperienceEducation } from '../components/sections/ExperienceEducation';
 import { BentoGrid } from '../components/sections/BentoGrid';
 import { Contact } from './Contact';
-import { REAL_GITHUB_REPOS_FALLBACK, type Project } from '../data/projects';
+import { REAL_GITHUB_REPOS_FALLBACK, EXCLUDED_REPOS, PROJECT_CATEGORY, type Project } from '../data/projects';
 import { ProjectCard } from '../components/projects/ProjectCard';
 import { GithubIcon, LinkedinIcon } from '../components/common/Icons';
 import { FileText, ChevronDown } from 'lucide-react';
@@ -80,7 +80,7 @@ export function Home() {
   // Projects state & single-fetch caching
   const [projects, setProjects] = useState<Project[]>(REAL_GITHUB_REPOS_FALLBACK);
   const [loading, setLoading] = useState(false);
-  const [filter, setFilter] = useState<'all' | 'robotics' | 'ai'>('all');
+  const [filter, setFilter] = useState<'all' | 'robotics' | 'ai' | 'other'>('all');
 
   useEffect(() => {
     const fetchGitHubRepos = async () => {
@@ -128,20 +128,10 @@ export function Home() {
   }, []);
 
   const filteredProjects = projects.filter((p) => {
+    if (EXCLUDED_REPOS.has(p.name)) return false;
     if (filter === 'all') return true;
-    const lang = (p.language || '').toLowerCase();
-    const name = (p.name || '').toLowerCase();
-    const desc = (p.description || '').toLowerCase();
-    const topics = (p.topics || []).join(' ').toLowerCase();
-    const fullText = `${lang} ${name} ${desc} ${topics}`;
-
-    if (filter === 'robotics') {
-      return lang.includes('matlab') || lang.includes('c++') || lang.includes('c') || fullText.includes('robot') || fullText.includes('stm32') || fullText.includes('control') || fullText.includes('ros') || fullText.includes('slam') || fullText.includes('hardware');
-    }
-    if (filter === 'ai') {
-      return lang.includes('python') || lang.includes('notebook') || fullText.includes('ai') || fullText.includes('vision') || fullText.includes('pytorch') || fullText.includes('learning') || fullText.includes('detection');
-    }
-    return true;
+    // anything not listed falls into "other", so a new repo never vanishes
+    return (PROJECT_CATEGORY[p.name] ?? 'other') === filter;
   });
 
   return (
@@ -178,7 +168,7 @@ export function Home() {
             {/* HERO CTA BUTTONS */}
             <div className="hero-cta">
               <a
-                href="/Giorgio_De_Santis_CV.pdf"
+                href={t.hero.cvFile}
                 download
                 className="btn btn-primary btn-hero-cv"
               >
@@ -213,7 +203,7 @@ export function Home() {
             <div className="hero-photo-card glass-card">
               <div className="photo-inner">
                 <img
-                  src="/profile.jpg"
+                  src="/profile15544545.jpg"
                   alt="Giorgio De Santis"
                   className="hero-profile-img"
                 />
@@ -317,6 +307,12 @@ export function Home() {
             onClick={() => setFilter('ai')}
           >
             {t.projects.filterAI}
+          </button>
+          <button
+            className={`filter-btn ${filter === 'other' ? 'filter-btn--active' : ''}`}
+            onClick={() => setFilter('other')}
+          >
+            {t.projects.filterOther}
           </button>
         </div>
 

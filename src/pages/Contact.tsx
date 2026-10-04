@@ -102,7 +102,7 @@ export function Contact() {
             </a>
 
             <a
-              href="/Giorgio_De_Santis_CV.pdf"
+              href={t.hero.cvFile}
               target="_blank"
               rel="noreferrer"
               download
@@ -113,7 +113,7 @@ export function Contact() {
               </div>
               <div>
                 <span className="contact-link-label">{t.contact.cvLabel}</span>
-                <span className="contact-link-value">Giorgio_De_Santis_CV.pdf</span>
+                <span className="contact-link-value">{t.hero.cvFile.replace("/", "")}</span>
               </div>
             </a>
 
