@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Agent scaffolding, not part of the site
+.agents/
+.codex/
+.impeccable/
+.claude/
+scratch/
