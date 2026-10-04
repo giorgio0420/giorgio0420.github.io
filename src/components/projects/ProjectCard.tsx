@@ -15,8 +15,10 @@ export function ProjectCard({ project }: Props) {
 
   const candidates = KNOWN_REPO_GIFS[project.name] || (project.gifUrl ? [project.gifUrl] : [
     `https://raw.githubusercontent.com/giorgio0420/${project.name}/main/preview.gif`,
+    `https://raw.githubusercontent.com/giorgio0420/${project.name}/main/media/preview.gif`,
     `https://raw.githubusercontent.com/giorgio0420/${project.name}/main/gif.gif`,
     `https://raw.githubusercontent.com/giorgio0420/${project.name}/master/preview.gif`,
+    `https://raw.githubusercontent.com/giorgio0420/${project.name}/master/media/preview.gif`,
     `https://raw.githubusercontent.com/giorgio0420/${project.name}/master/gif.gif`,
   ]);
 
