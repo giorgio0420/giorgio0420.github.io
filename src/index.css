@@ -3,8 +3,11 @@
 ──────────────────────────────────────────────── */
 :root {
   --bg:            #0b0d10;
-  --surface:       rgba(245, 158, 11, 0.05);
-  --surface-hover: rgba(245, 158, 11, 0.12);
+  /* Warm near-black, not a bare amber wash: the moon gif behind the page is
+     bright enough to read through a 5% tint, which left card text unreadable
+     on touch devices where :hover never fires. */
+  --surface:       rgba(18, 14, 9, 0.66);
+  --surface-hover: rgba(26, 20, 11, 0.80);
   --border:        rgba(245, 158, 11, 0.18);
   --border-hover:  rgba(245, 158, 11, 0.45);
 
@@ -148,10 +151,14 @@ ul {
   transition: border-color var(--transition), background var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 
-.glass-card:hover {
-  background: var(--surface-hover);
-  border-color: var(--border-hover);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--accent-glow);
+/* Touch browsers latch :hover on the last element tapped, so the lift is
+   scoped to pointers that can actually leave the card again. */
+@media (hover: hover) {
+  .glass-card:hover {
+    background: var(--surface-hover);
+    border-color: var(--border-hover);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--accent-glow);
+  }
 }
 
 /* ────────────────────────────────────────────────
@@ -623,9 +630,9 @@ ul {
   color: var(--accent);
   margin-bottom: 0.75rem;
   padding: 0.3rem 0.9rem;
-  border: 1px solid rgba(245, 158, 11, 0.18);
+  border: 1px solid rgba(245, 158, 11, 0.28);
   border-radius: 100px;
-  background: rgba(245, 158, 11, 0.05);
+  background: rgba(18, 14, 9, 0.66);
 }
 
 .section-title {
@@ -983,12 +990,14 @@ ul {
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), border-color var(--transition), background var(--transition), box-shadow var(--transition);
 }
 
-.project-card:hover {
-  transform: translateY(-6px);
-  background: var(--surface-hover);
-  border-color: var(--accent);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--accent-glow);
-  z-index: 10;
+@media (hover: hover) {
+  .project-card:hover {
+    transform: translateY(-6px);
+    background: var(--surface-hover);
+    border-color: var(--accent);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--accent-glow);
+    z-index: 10;
+  }
 }
 
 .project-media-container {
