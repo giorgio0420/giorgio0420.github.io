@@ -43,7 +43,7 @@ A modern, high-performance portfolio website for **Giorgio De Santis** — Robot
 - 🚁 [**Drone-UAV-Obstacle-Avoidance**](https://github.com/giorgio0420/Drone-UAV-Obstacle-Avoidance): UAV autonomous navigation and obstacle avoidance using vortex vector fields (CoppeliaSim / Lua).
 - 🛰️ [**RemoteSensing-Segmentation-NN**](https://github.com/giorgio0420/RemoteSensing-Segmentation-NN): High-resolution semantic land-cover segmentation using UNet & Swin Transformers.
 - 🦷 [**Dental-Imagery-Generation-Segmentation-CV**](https://github.com/giorgio0420/Dental-Imagery-Generation-Segmentation-CV): Deep learning pipeline for synthetic image generation and semantic segmentation.
-- 🔬 [**lhc-feat-vs-img**](https://github.com/giorgio0420/lhc-feat-vs-img): Physics features vs raw detector images on LHC events (PyTorch vs Scikit-Learn).
+- 🔬 [**lhc-event-classification**](https://github.com/giorgio0420/lhc-event-classification): Physics features vs raw detector images on LHC events (PyTorch vs Scikit-Learn).
 
 ---
 
@@ -57,8 +57,8 @@ A modern, high-performance portfolio website for **Giorgio De Santis** — Robot
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/giorgio0420/CVProject.git
-cd CVProject
+git clone https://github.com/giorgio0420/giorgio0420.github.io.git
+cd giorgio0420.github.io
 
 # 2. Install dependencies
 npm install
