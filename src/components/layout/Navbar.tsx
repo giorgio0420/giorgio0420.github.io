@@ -34,6 +34,17 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Esc closes the mobile menu; without it the only way out is the X button,
+  // which keyboard users reach only after tabbing through the whole menu.
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [mobileMenuOpen]);
+
   const toggleLanguage = () => {
     setLanguage(language === 'en' ? 'it' : 'en');
   };
@@ -49,6 +60,7 @@ export function Navbar() {
 
   return (
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+      <a href="#home" className="skip-link">{t.nav.skipToContent}</a>
       <div className="nav-content">
 
         {/* LOGO GDS */}
@@ -63,6 +75,7 @@ export function Navbar() {
             <button
               onClick={() => scrollToSection('home')}
               className={`nav-link ${activeSection === 'home' ? 'nav-link--active' : ''}`}
+              aria-current={activeSection === 'home' ? 'true' : undefined}
               title={t.nav.home}
             >
               <Home size={16} />
@@ -71,6 +84,7 @@ export function Navbar() {
             <button
               onClick={() => scrollToSection('projects')}
               className={`nav-link ${activeSection === 'projects' ? 'nav-link--active' : ''}`}
+              aria-current={activeSection === 'projects' ? 'true' : undefined}
               title={t.nav.projects}
             >
               <Code2 size={16} />
@@ -79,6 +93,7 @@ export function Navbar() {
             <button
               onClick={() => scrollToSection('education')}
               className={`nav-link ${activeSection === 'education' ? 'nav-link--active' : ''}`}
+              aria-current={activeSection === 'education' ? 'true' : undefined}
               title={t.nav.education}
             >
               <GraduationCap size={16} />
@@ -87,6 +102,7 @@ export function Navbar() {
             <button
               onClick={() => scrollToSection('contact')}
               className={`nav-link ${activeSection === 'contact' ? 'nav-link--active' : ''}`}
+              aria-current={activeSection === 'contact' ? 'true' : undefined}
               title={t.nav.contacts}
             >
               <Mail size={16} />
@@ -122,6 +138,8 @@ export function Navbar() {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="mobile-menu-toggle-btn"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -132,10 +150,11 @@ export function Navbar() {
 
       {/* MOBILE DROPDOWN MENU OVERLAY */}
       {mobileMenuOpen && (
-        <div className="mobile-dropdown-menu glass-card">
+        <div className="mobile-dropdown-menu glass-card" id="mobile-menu">
           <button
             onClick={() => scrollToSection('home')}
             className={`mobile-nav-item ${activeSection === 'home' ? 'mobile-nav-item--active' : ''}`}
+              aria-current={activeSection === 'home' ? 'true' : undefined}
           >
             <Home size={18} />
             <span>{t.nav.home}</span>
@@ -143,6 +162,7 @@ export function Navbar() {
           <button
             onClick={() => scrollToSection('projects')}
             className={`mobile-nav-item ${activeSection === 'projects' ? 'mobile-nav-item--active' : ''}`}
+              aria-current={activeSection === 'projects' ? 'true' : undefined}
           >
             <Code2 size={18} />
             <span>{t.nav.projects}</span>
@@ -150,6 +170,7 @@ export function Navbar() {
           <button
             onClick={() => scrollToSection('education')}
             className={`mobile-nav-item ${activeSection === 'education' ? 'mobile-nav-item--active' : ''}`}
+              aria-current={activeSection === 'education' ? 'true' : undefined}
           >
             <GraduationCap size={18} />
             <span>{t.nav.education}</span>
@@ -157,6 +178,7 @@ export function Navbar() {
           <button
             onClick={() => scrollToSection('contact')}
             className={`mobile-nav-item ${activeSection === 'contact' ? 'mobile-nav-item--active' : ''}`}
+              aria-current={activeSection === 'contact' ? 'true' : undefined}
           >
             <Mail size={18} />
             <span>{t.nav.contacts}</span>

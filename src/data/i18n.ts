@@ -7,6 +7,7 @@ export const translations = {
       projects: 'Projects',
       education: 'Education',
       contacts: 'Contacts',
+      skipToContent: 'Skip to content',
     },
     hero: {
       eyebrow: "Hello, I'm",
@@ -127,6 +128,7 @@ export const translations = {
       projects: 'Progetti',
       education: 'Formazione',
       contacts: 'Contatti',
+      skipToContent: 'Vai al contenuto',
     },
     hero: {
       eyebrow: 'Ciao, sono',

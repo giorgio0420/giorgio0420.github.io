@@ -15,6 +15,11 @@ export function Contact() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
+    // Formspree's endpoint is public by design, so anyone can POST to it and
+    // burn the monthly quota. Bots fill every field they find; people never
+    // see this one.
+    if (data.get('_gotcha')) return;
+
     try {
       const response = await fetch('https://formspree.io/f/xanyqpyq', {
         method: 'POST',
@@ -127,6 +132,7 @@ export function Contact() {
                 id="name"
                 name="name"
                 type="text"
+                maxLength={100}
                 className="form-input"
                 placeholder={t.contact.namePlaceholder}
                 required
@@ -139,6 +145,7 @@ export function Contact() {
                 id="email"
                 name="email"
                 type="email"
+                maxLength={150}
                 className="form-input"
                 placeholder={t.contact.emailPlaceholder}
                 required
@@ -150,12 +157,22 @@ export function Contact() {
               <textarea
                 id="message"
                 name="message"
+                maxLength={2000}
                 className="form-input form-textarea"
                 placeholder={t.contact.messagePlaceholder}
                 required
                 rows={5}
               />
             </div>
+
+            <input
+              type="text"
+              name="_gotcha"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              style={{ display: 'none' }}
+            />
 
             <button type="submit" className="btn btn-primary btn-full" disabled={loading}>
               {sent ? (

@@ -238,7 +238,7 @@ export function Home() {
           {t.about.text3 && <p className="about-text">{t.about.text3}</p>}
           
           <div className="about-tools-divider">
-            <h4 className="about-tools-title">{t.skills.title}</h4>
+            <h3 className="about-tools-title">{t.skills.title}</h3>
             <div className="skills-grid">
               {t.skills.categories.map((group, index) => {
                 const duplicatedItems = [...group.items, ...group.items, ...group.items];
@@ -246,7 +246,7 @@ export function Home() {
 
                 return (
                   <div key={group.category} className="skill-card glass-card">
-                    <h3 className="skill-category-title">{group.category}</h3>
+                    <h4 className="skill-category-title">{group.category}</h4>
                     <div className="patch-marquee-wrapper">
                       <div className={`patch-marquee-track ${isReverse ? 'patch-marquee-track--reverse' : ''}`}>
                         {duplicatedItems.map((skill, idx) => {
@@ -256,7 +256,7 @@ export function Home() {
                               {iconInfo ? (
                                 <img
                                   src={`https://cdn.simpleicons.org/${iconInfo.slug}/${iconInfo.color}`}
-                                  alt={`${skill} icon`}
+                                  alt=""
                                   className="skill-tech-icon"
                                   loading="lazy"
                                   onError={(e) => {

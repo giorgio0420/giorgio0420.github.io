@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { KNOWN_REPO_GIFS, REPO_LANGUAGE_OVERRIDES, type Project } from '../../data/projects';
 import { GithubIcon } from '../common/Icons';
+import { safeUrl } from '../../utils/safeUrl';
 import { Star, GitFork } from 'lucide-react';
 
 interface Props {
@@ -85,7 +86,7 @@ export function ProjectCard({ project }: Props) {
       {/* FOOTER & METRICS */}
       <div className="project-card-footer">
         <a
-          href={project.html_url}
+          href={safeUrl(project.html_url)}
           target="_blank"
           rel="noreferrer"
           className="project-link-btn project-link-btn--github"

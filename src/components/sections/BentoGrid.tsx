@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { ChessLogoIcon } from '../common/Icons';
+import { safeUrl } from '../../utils/safeUrl';
 import { BookOpen, ExternalLink, Zap, Swords, AlertTriangle, ShieldAlert } from 'lucide-react';
 
 interface ChessStats {
@@ -27,7 +28,7 @@ export function BentoGrid() {
           const profile = await profileRes.json();
           const stats = await statsRes.json();
           setChessData({
-            avatarUrl: profile.avatar,
+            avatarUrl: safeUrl(profile.avatar),
             rapid: stats.chess_rapid?.last?.rating,
             blitz: stats.chess_blitz?.last?.rating,
             tactics: stats.tactics?.highest?.rating,
@@ -66,8 +67,9 @@ export function BentoGrid() {
             title="Strava Activity Summary"
             height="160"
             width="100%"
-            frameBorder="0"
-            allowTransparency
+            loading="lazy"
+            referrerPolicy="no-referrer"
+            sandbox="allow-scripts allow-same-origin allow-popups"
             scrolling="no"
             src="https://www.strava.com/athletes/157048898/activity-summary/cdd281d7e56f4de861189ad7e1fd6436ad189956"
             className="bento-strava-iframe"
