@@ -43,8 +43,10 @@ html, body {
   scroll-behavior: smooth;
   background-color: var(--bg);
   width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden !important;
+  /* clip, not hidden: overflow:hidden on the root element turns html into a
+     scroll container, which silently breaks position:sticky everywhere below.
+     The overflow it was hiding came from the 100vw rules fixed below. */
+  overflow-x: clip;
 }
 
 body {
@@ -56,16 +58,29 @@ body {
   position: relative;
 }
 
+/* Still frame behind the video: shown while the video decodes, if it fails to
+   play, and to users who asked for reduced motion. 28 KB.
+   inset:0 instead of 100vw/100vh — 100vw includes the scrollbar, so the old
+   rule overflowed the page by its width on every desktop browser. */
 body::after {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('/moon1.gif');
+  inset: 0;
+  background-image: url('/moon-poster.webp');
   background-size: cover;
   background-position: center center;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Same picture, same 800x450, same 166 frames as the old moon1.gif — 373 KB
+   instead of 17.4 MB, because h264/VP9 compress between frames and GIF cannot. */
+.bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   z-index: -2;
   pointer-events: none;
 }
@@ -76,13 +91,9 @@ body::after {
    the scrim now darkens that column instead of the whole picture, and the gif
    runs at full strength everywhere else. Measured on the gif's own frames, the
    hero paragraph goes from 4.91:1 to 5.85:1 against WCAG AA's 4.5. */
-body::before {
-  content: '';
+.bg-scrim {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   background: linear-gradient(to right,
     rgba(8, 9, 15, 0.68) 0%,
     rgba(8, 9, 15, 0.68) 56%,
@@ -94,17 +105,37 @@ body::before {
 /* Below this width the hero text is centred and full-bleed, so a column of
    shade no longer covers it and the scrim has to go back to the whole frame. */
 @media (max-width: 960px) {
-  body::before {
+  .bg-scrim {
     background: rgba(8, 9, 15, 0.52);
   }
 }
 
-/* Disable GIF for users who prefer reduced motion */
+/* A GIF's animation is not a CSS animation, so the old `animation: none` here
+   never stopped it — it only dimmed it to 8% while still downloading and
+   decoding every frame. Dropping the video element is what actually honours
+   the preference; body::after's still frame stays visible underneath. */
 @media (prefers-reduced-motion: reduce) {
-  body::after {
-    animation: none;
-    opacity: 0.08;
+  .bg-video {
+    display: none;
   }
+}
+
+/* Keyboard-only: first Tab on the page reveals this above the fixed navbar. */
+.skip-link {
+  position: fixed;
+  top: -5rem;
+  left: 1rem;
+  z-index: 300;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #0b0d10;
+  font-weight: 600;
+  transition: top var(--transition);
+}
+
+.skip-link:focus {
+  top: 1rem;
 }
 
 #root {
