@@ -15,10 +15,13 @@ interface TechIconInfo {
   color: string;
 }
 
+// Icons are served from public/tech, not cdn.simpleicons.org: a CDN request per
+// icon handed the visitor's IP to a third party before any interaction, and
+// gazebo, freertos and visualstudiocode are not in SimpleIcons at all - those
+// three 404'd on every page load and onError hid it. They fall back to the dot.
 const TECH_ICON_SLUG_MAP: Record<string, TechIconInfo> = {
   // Robotics & Simulation
   'ROS 2': { slug: 'ros', color: '22314E' },
-  'Gazebo': { slug: 'gazebo', color: 'F58220' },
   'CoppeliaSim': { slug: 'lua', color: '002F6C' },
   'MathWorks': { slug: 'cplusplus', color: '0076A8' },
   'NVIDIA': { slug: 'nvidia', color: '76B900' },
@@ -28,7 +31,6 @@ const TECH_ICON_SLUG_MAP: Record<string, TechIconInfo> = {
   'Texas Instruments': { slug: 'stmicroelectronics', color: 'CC0000' },
   'LTspice': { slug: 'stmicroelectronics', color: '9B111E' },
   'TINA-TI': { slug: 'stmicroelectronics', color: '004B87' },
-  'FreeRTOS': { slug: 'freertos', color: '00B0D7' },
   'STM32': { slug: 'stmicroelectronics', color: '03234C' },
   'ESP32': { slug: 'espressif', color: 'E7352C' },
   'KiCad': { slug: 'kicad', color: '314685' },
@@ -65,7 +67,6 @@ const TECH_ICON_SLUG_MAP: Record<string, TechIconInfo> = {
   'Linux': { slug: 'linux', color: 'FCC624' },
   'Ubuntu': { slug: 'ubuntu', color: 'E95420' },
   'Docker': { slug: 'docker', color: '2496ED' },
-  'VS Code': { slug: 'visualstudiocode', color: '007ACC' },
   'Git': { slug: 'git', color: 'F05032' },
   'GitHub': { slug: 'github', color: 'ffffff' },
 };
@@ -255,7 +256,7 @@ export function Home() {
                             <div key={`${skill}-${idx}`} className="skill-tech-pill">
                               {iconInfo ? (
                                 <img
-                                  src={`https://cdn.simpleicons.org/${iconInfo.slug}/${iconInfo.color}`}
+                                  src={`/tech/${iconInfo.slug}-${iconInfo.color}.svg`}
                                   alt=""
                                   className="skill-tech-icon"
                                   loading="lazy"

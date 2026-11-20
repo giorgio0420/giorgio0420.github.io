@@ -50,7 +50,7 @@ html, body {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
   background-color: transparent;
   color: var(--text);
   line-height: 1.65;
@@ -144,7 +144,7 @@ body::after {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
 }
 
 a {
@@ -248,7 +248,7 @@ ul {
 }
 
 .nav-logo-text {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-weight: 800;
   font-size: 1.15rem;
   letter-spacing: 3px;
@@ -270,7 +270,7 @@ ul {
 }
 
 .nav-link {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-weight: 500;
   font-size: 0.95rem;
   letter-spacing: 0.5px;
@@ -365,7 +365,7 @@ ul {
   padding: 0.75rem 1rem;
   border-radius: var(--radius-sm);
   color: var(--text-sub);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   background: transparent;
@@ -395,7 +395,7 @@ ul {
   gap: 0.55rem;
   padding: 0.5rem 0.95rem;
   border-radius: var(--radius-sm);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-weight: 600;
   font-size: 0.85rem;
   letter-spacing: 0.3px;
@@ -434,7 +434,7 @@ ul {
   background: rgba(126, 184, 247, 0.08);
   border: 1px solid rgba(126, 184, 247, 0.3);
   color: var(--accent);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-weight: 700;
   font-size: 0.82rem;
   transition: all var(--transition);
@@ -466,7 +466,7 @@ ul {
 }
 
 .hero-eyebrow {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 3px;
@@ -491,7 +491,7 @@ ul {
 }
 
 .hero-role {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 1.35rem;
   font-weight: 600;
   color: var(--accent-warm);
@@ -522,7 +522,7 @@ ul {
   border-radius: 100px;
   background: rgba(126, 184, 247, 0.08);
   border: 1px solid rgba(126, 184, 247, 0.35);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--accent);
@@ -618,7 +618,7 @@ ul {
 }
 
 .photo-badge-text {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 0.76rem;
   font-weight: 600;
   color: var(--text);
@@ -655,7 +655,7 @@ ul {
 
 .section-label {
   display: inline-block;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 3px;
@@ -703,7 +703,7 @@ ul {
 }
 
 .about-tools-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--accent);
@@ -719,7 +719,7 @@ ul {
 }
 
 .stat-num {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 2.2rem;
   font-weight: 800;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-warm) 100%);
@@ -763,7 +763,7 @@ ul {
 }
 
 .skill-category-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 0.88rem;
   font-weight: 700;
   color: var(--accent);
@@ -840,7 +840,7 @@ ul {
 }
 
 .skill-tech-name {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 0.84rem;
   font-weight: 600;
   color: var(--text);
@@ -956,7 +956,7 @@ ul {
   border-radius: var(--radius-sm);
   background: rgba(245, 158, 11, 0.08);
   border: 1px solid rgba(245, 158, 11, 0.28);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--accent-warm);
@@ -984,7 +984,7 @@ ul {
 .filter-btn {
   padding: 0.5rem 1.1rem;
   border-radius: var(--radius-sm);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-weight: 600;
   font-size: 0.88rem;
   background: var(--surface);
@@ -1252,7 +1252,7 @@ ul {
   gap: 0.55rem;
   padding: 0.7rem 1.4rem;
   border-radius: var(--radius-sm);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: 0.3px;
@@ -1340,7 +1340,7 @@ ul {
 }
 
 .bento-badge {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -1376,7 +1376,7 @@ ul {
 .bento-icon-green { color: #22c55e; }
 
 .bento-big-metric {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 1.8rem;
   font-weight: 800;
   color: var(--text);
@@ -1384,7 +1384,7 @@ ul {
 }
 
 .bento-sub-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--text);
@@ -1491,7 +1491,7 @@ ul {
 }
 
 .bento-username-tag {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
   padding: 0.2rem 0.55rem;
@@ -1519,7 +1519,7 @@ ul {
 }
 
 .bento-desc--android-alert {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 1.15rem;
   font-weight: 800;
   color: #ef4444 !important;
@@ -1678,7 +1678,7 @@ ul {
   background: rgba(245, 158, 11, 0.08);
   border: 1px solid var(--border);
   color: var(--accent);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit Variable', 'Outfit', sans-serif;
   font-size: 0.82rem;
   font-weight: 600;
   flex-shrink: 0;
