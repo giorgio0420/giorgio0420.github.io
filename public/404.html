@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Giorgio De Santis — Robotics &amp; AI Engineer</title>
+    <script>
+      // The site is a single page; old /projects, /education and /contact URLs
+      // land here on GitHub Pages. Send them to the matching anchor.
+      var section = location.pathname.replace(/^\/|\/$/g, '');
+      var known = ['projects', 'education', 'contact'];
+      location.replace('/' + (known.indexOf(section) > -1 ? '#' + section : ''));
+    </script>
+  </head>
+  <body></body>
+</html>
