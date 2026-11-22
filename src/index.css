@@ -83,6 +83,14 @@ body::after {
   object-fit: cover;
   z-index: -2;
   pointer-events: none;
+  /* it mounts after the page has loaded, over the still frame already painted
+     by body::after, so fade it in instead of cutting */
+  animation: bg-video-in 600ms ease-out both;
+}
+
+@keyframes bg-video-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* The gif used to be dimmed twice: 0.80 here and a full-viewport scrim below,
