@@ -33,6 +33,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 };
 
+// the provider and its hook belong together; splitting them in two files only
+// buys a faster hot reload
+// eslint-disable-next-line react-refresh/only-export-components
 export const useLanguage = (): LanguageContextType => {
   const context = useContext(LanguageContext);
   if (!context) {

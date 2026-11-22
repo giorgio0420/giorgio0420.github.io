@@ -30,10 +30,10 @@ export function ExperienceEducation() {
                 {edu.institution}
               </div>
               <p className="timeline-desc">{edu.desc}</p>
-              {(edu as any).thesis && (
+              {'thesis' in edu && (
                 <div className="timeline-thesis-badge">
                   <BookOpen size={14} className="thesis-icon" />
-                  <span>{(edu as any).thesis}</span>
+                  <span>{edu.thesis}</span>
                 </div>
               )}
             </div>
